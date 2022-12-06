@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header('내정보')}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <header th:replace="~{fragments/bodyHeader :: header}">
+
+    </header>
+
+    <div class="contents">
+        <div class="contents-container">
+            <!-- 페이지 이름 -->
+            <h1 th:text="#{memberForm.detail}">내정보</h1>
+
+            <!-- 회원 상세 정보 box -->
+            <div>
+                <!-- 아이디 -->
+                <div class="form-group memberDetailBox">
+                    <label th:for="memberId" th:text="#{memberForm.id}">id</label>
+                    <div class="memberDetailBox-contents" th:text="${form.memberId}">id</div>
+                </div>
+
+                <!-- 이름 -->
+                <div class="form-group memberDetailBox">
+                    <label th:for="memberName" th:text="#{memberForm.name}">name</label>
+                    <div class="memberDetailBox-contents" th:text="${form.memberName}">name</div>
+                </div>
+
+                <!-- 이메일 -->
+                <div class="form-group memberDetailBox">
+                    <label th:for="memberEmail" th:text="#{memberForm.email}">e</label>
+                    <div class="memberDetailBox-contents" th:text="${form.memberEmail}"></div>
+                </div>
+
+                <!-- 휴대전화 -->
+                <div class="form-group memberDetailBox">
+                    <label th:for="phone1" th:text="#{memberForm.mobilePhone}">휴대전화</label>
+                    <div class="memberDetailBox-contents" th:text="${form.memberPhone1}">mobile phone</div>
+                </div>
+
+                <!-- 집전화 -->
+                <div class="form-group memberDetailBox">
+                    <label th:for="phone2" th:text="#{memberForm.phoneCall}">전화</label>
+                    <div class="memberDetailBox-contents" th:text="${form.memberPhone2}">phonecall</div>
+                </div>
+
+                <!-- 생일 -->
+                <div class="form-group memberDetailBox">
+                    <label th:for="memberBirthday" th:text="#{memberForm.birthday}">생일</label>
+                    <div class="memberDetailBox-contents" th:text="${form.memberBirthday}">birthday</div>
+                </div>
+
+                <!-- button box -->
+                <div class="form-group">
+                    <!-- 수정하기 -->
+                    <button type="button" th:text="#{button.update}" th:onclick="|location.href='@{/member/update}'|">update</button>
+                    <!-- 탈퇴하기 -->
+                    <button type="button" id="delete_btn" th:text="#{button.member.delete}" >member delete</button>
+                    <!-- 나가기 -->
+                    <button type="button"
+                            th:text="#{button.out}"
+                            th:onclick="|location.href='@{/board/list}'|">go out</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <footer th:replace="~{fragments/bodyFooter :: footer}">
+
+    </footer>
+
+    <!-- javascript files -->
+    <script src="/js/member_update.js"></script>
+
+</body>
+</html>

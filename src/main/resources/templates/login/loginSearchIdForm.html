@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header('아이디 찾기')}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <header th:replace="~{fragments/bodyHeader :: header}">
+
+    </header>
+
+    <!-- 아이디 찾기 box -->
+    <div class="contents">
+        <div class="contents-container">
+
+            <form id="search_form" method="post" th:action="@{/lookforid/seek}" th:object="${loginSearchIdForm}">
+
+                <h1 class="search_title">아이디 찾기</h1>
+
+                <ul class="search_line searchType-container">
+                    <li th:class="searchEmailBox" th:text="email"></li>
+                    <li th:class="searchPhoneBox" th:text="phone"></li>
+                </ul>
+
+                <!-- 이름 -->
+                <div class="search_line idBox">
+                    <label th:for="name" th:text="#{input.name}">name</label>
+                    <input type="text" th:field="*{name}"/>
+                </div>
+
+                <!-- 이메일 부분 -->
+                <div th:class="|search_line search-container nameAndEmail|">
+                    <!-- 이메일 -->
+                    <label th:for="email" th:text="#{input.email}">email</label>
+                    <input type="text" th:field="*{email}"/>
+                </div>
+
+                <!-- 전화번호 부분 -->
+                <div th:class="|search_line search-container nameAndPhone|">
+                    <!-- 전화번호 -->
+                    <label th:for="phone" th:text="#{input.phone}">phone</label>
+                    <input type="text" th:field="*{phone}"/>
+                </div>
+
+                <div class="search_line">
+                    <!-- 아이디 찾기 버튼 -->
+                    <button type="submit"
+                            th:text="#{button.lookingForId}">seek
+                    </button>
+
+                    <!-- 취소 버튼 -->
+                    <button type="button"
+                            th:text="#{button.cancel}"
+                            th:onclick="|location.href='@{/board/list}'|">cancel
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+    <footer th:replace="~{fragments/bodyFooter :: footer}">
+
+    </footer>
+
+    <!-- javascript files -->
+    <script src="/js/login_search.js"></script>
+</div>
+</body>
+</html>

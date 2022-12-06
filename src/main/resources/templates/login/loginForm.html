@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header('로그인')}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <header th:replace="~{fragments/bodyHeader :: header}">
+
+    </header>
+
+    <!-- 로그인 box -->
+    <div class="contents">
+        <div class="contents-container">
+            <form id="login_form" role="form" method="post" th:action th:object="${loginForm}">
+                <!-- login -->
+                <h1 class="login_title" th:text="#{title.login}">login</h1>
+                <!-- 아이디 -->
+                <div class="form-group login_line">
+                    <label th:for="loginId" th:text="#{loginForm.id}">id</label>
+                    <input type="text" th:field="*{loginId}">
+                </div>
+                <!-- 비밀번호 -->
+                <div class="form-group login_line">
+                    <label th:for="loginPwd" th:text="#{loginForm.pwd}">pwd</label>
+                    <input type="password" th:field="*{loginPwd}" />
+                </div>
+                <!-- 아이디 기억 -->
+                <div class="form-group rememberId">
+                    <input type="checkbox" th:field="*{rememberId}" />
+                    <label th:for="loginPwd" th:text="#{loginForm.rememberId}">remember</label>
+                </div>
+                <!-- 로그인 실패 이유 나오기 -->
+
+                <div class="form-group login_line" th:if="${#fields.hasGlobalErrors()}">
+                    <p th:each="err : ${#fields.globalErrors()}"
+                       th:class="${#fields.globalErrors()} ? 'globalError'"
+                       th:text="${err}">
+                        글로벌 오류 메시지
+                    </p>
+                </div>
+
+                <div class="login_line">
+                    <button type="submit" th:text="#{button.login}">login</button>
+                </div>
+
+                <div class="login_line">
+                    <!-- 아이디 찾기 -->
+                    <button type="button"
+                            th:text="#{button.lookingForId}"
+                            th:onclick="|location.href='@{/lookforid}'|">
+
+                    </button>
+                    <!-- 비밀번호 찾기 -->
+                    <button type="button"
+                            th:text="#{button.lookingForPwd}"
+                            th:onclick="|location.href='@{/lookforpwd}'|">
+
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <footer th:replace="~{fragments/bodyFooter :: footer}">
+
+    </footer>
+
+    <!-- javascript files -->
+    <script src="/js/loginForm.js"></script>
+</body>
+</html>

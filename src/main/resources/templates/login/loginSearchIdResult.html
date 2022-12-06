@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header('아이디 찾기 결과')}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <header th:replace="~{fragments/bodyHeader :: header}">
+
+    </header>
+
+    <!-- 아이디 list box -->
+    <div class="contents">
+        <div class="contents-container">
+            <div id="search_form">
+                <h1 class="search_title">결과</h1>
+
+                <!-- id print box -->
+                <div class="search_line">
+                    <span th:text="|${inputName}님의 아이디는|">회원님의 아이디는</span>
+                    <ul>
+                        <li th:each="id : ${printIdList}" th:text="${id}"></li>
+                    </ul>
+                </div>
+
+                <!-- 로그인 이동 -->
+                <div class="search_line">
+                    <button type="button"
+                            th:text="#{button.login}"
+                            th:onclick="|location.href='@{/login}'|">
+                    </button>
+                    <!-- 비밀번호 찾기 -->
+                    <button type="button"
+                            th:text="#{button.lookingForPwd}"
+                            th:onclick="|location.href='@{/lookforpwd}'|">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer th:replace="~{fragments/bodyFooter :: footer}">
+
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,502 @@
+@charset "UTF-8";
+
+/* font 모음 */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+/* css document */
+
+html * {
+    box-sizing: border-box;
+    min-height: 100%;
+}
+
+a {
+    color: #d9889b;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #e3a0b0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /*
+    background-image: url();
+    background-size: 122px 122px;
+    font-family: ;
+    font-size: 14px;
+    */
+}
+
+/* 헤더 */
+header {
+
+    background: #ffffff;
+}
+
+header:before {
+    content: " ";
+    /*
+    background-image: url();
+    background-size: 95px 7px;
+    */
+    display: block;
+    height: 5px;
+}
+
+/* header 로그인, 내정보, 로그아웃 부분 */
+header ul {
+    text-align: right;
+    padding: 10px;
+}
+
+header li {
+    display: inline-block;
+    list-decoration: none;
+}
+
+.header-container a {
+    color: #000000;
+}
+
+.header-container {
+    padding: 30px 20px 10px 20px;
+    text-align: center;
+}
+
+h1.header-logo {
+    display: inline-block;
+    margin: 0;
+    width: 200px;
+    height: 44px;
+    /*
+    background: url();
+    background-size: 200ppx 44px;
+    text-indent: -9999px;
+    */
+    color: #000000;
+    font-family: 'Pacifico', cursive;
+    font-size: 5rem;
+}
+
+header-container h3 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+}
+
+/* 푸터 */
+footer {
+
+}
+
+.footer-container {
+    padding: 20px;
+    background: #000000;
+}
+
+.footer-container address, .footer-container ul, .footer-container {
+    font-size: 0.8rem;
+    color: #ffffff;
+}
+
+.footer-container address {
+    display: inline-block;
+    width: 70%;
+}
+
+.footer-container .logo-container {
+    float: right;
+    width: 30%;
+    text-align: right;
+}
+
+.footer-container img {
+    width: 150px;
+    height: 87px;
+}
+
+/* 콘텐츠 */
+.contents {
+}
+
+.contents-container {
+    box-sizing: border-box;
+    max-width: 900px;
+    margin: 1rem auto;
+    padding 20px;
+    background-color: #fff;
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.2);
+}
+
+/* field error 발생 */
+.fieldError {
+    color: #ff3e43;
+}
+
+/* global error 바생 */
+.globalError {
+    color: #ff3e43;
+}
+
+/* form */
+form {
+
+}
+
+.form-group, .replyCollection {
+    margin: 10px 0 0 0;
+    padding: 0 0 0 20px;
+}
+
+/* 댓글 form */
+.reply_box {
+    margin: 3rem auto;
+    border: 3px solid #809cd0;
+    max-width: 850px;
+    border-radius: 8px;
+}
+
+.reply_group {
+    margin: 1.5rem auto;
+    border: 1.5px solid #678cd0;
+    max-width: 800px;
+    border-radius: 8px;
+}
+
+.reply_group li.replyCollection {
+    list-style: none;
+    margin: 1rem auto;
+    padding: 0.5rem;
+    border-bottom: 1.5px dashed #678cd0;
+}
+
+/*
+.reply_group li.replyCollection::before {
+    content: "작성자";
+    padding: 1px;
+}
+*/
+.reply_group li.replyCollection replyCollection-contents:: before {
+    content: "작성자";
+    padding: 1px;
+}
+
+/* 로그인 form */
+#login_form, #search_form {
+    margin: 3rem auto;
+    border: 3px solid #4267ab;
+    width: 350px;
+    border-radius: 8px;
+}
+
+.login_title, .search_title {
+    margin: 0;
+    padding: 8px 0;
+    font-size: 1rem;
+    text-align: center;
+    background: #4267ab;
+    color: #fff;
+}
+
+.login_line, .search_line {
+    text-align: center;
+    margin: 5px;
+}
+
+/* 아이디 기억 부분 */
+.contents-container .rememberId {
+    padding: 10px;
+    text-align: right;
+}
+
+/* maincol 레이아웃 부분 */
+.maincol {
+    /*
+    margin: 0 -360px 0 20px;
+    */
+    padding: 30px 0 30px;
+    box-sizing: border-box;
+    max-width: 95%;
+    margin: 1rem auto;
+    padding 20px;
+    background-color: #fff;
+    /*
+    box-shadow: 0 6px 10px 0 rgba(255,0,0,0.5);
+    */
+}
+
+.main-container {
+    overflow: hidden;
+    padding: 0 0 40px 0;
+    background: #ffffff;
+}
+
+/* news 부분 */
+.news-contents {
+    margins: 0;
+    padding: 0;
+    list_style: none;
+}
+
+.news-contents li {
+    overflow: hidden;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    border: 1px solid #dadada;
+    border-radius: 10px;
+}
+
+.news-contents li .moreDetailBtn {
+    cursor: pointer;
+}
+
+.news-contents li .moreDetailBtn .boardRockImage {
+    width: 30px;
+    height: 30px;
+}
+
+.news-contents li img {
+    float: left;
+    margin-right: 10px;
+    width: 190px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.news-contents li p {
+    margin: 10px;
+}
+
+.news-contents li .title {
+    padding-bottom: 1px;
+    border-bottom: dashed;
+    border-bottom: 1px solid #dadada;
+    font-size: 2rem;
+}
+
+.news-contents li h5 {
+    display: inline;
+}
+
+/* 좋아요 부분 */
+.news-contents li .likeBox img {
+    margin: 1px;
+    width: 22px;
+    height: 20px;
+}
+
+/* 이미지 li */
+.image-group li {
+    list-style: none;
+}
+
+.image-group li img {
+    max-width: 300px;
+    max-height: 260px;
+    border-radius: 10px;
+}
+
+/* 더보기 moreDetailBtn 부분 */
+.boardLi > h5 > .moreDetailBtn {
+    color: #d9889b;
+    cursor: pointer;
+}
+
+.boardLi h5 .moreDetailBtn:hover {
+    color: #e3a0b0;
+}
+
+/* paging box 부분 */
+.paging-container {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+/* 현재 페이지 구분 */
+.paging-container .nowPageNum {
+    color: #000000;
+    cursor: auto;
+    /* hover 이벤트 제거 */
+    pointer-events: none;
+}
+
+.paging-container a {
+
+    margin-left: 0.5rem;
+    padding: 6px 1rem;
+    border: 2px solid rgb(69 177 232 / 94%);
+    border-radius: 10px;
+    background: #1f7bbd;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.paging-container a:hover {
+    background: rgb(69 177 232 / 94%);
+}
+
+/* 회원가입 box 부분 */
+/* 필수 writing box 부분 */
+.essentialBox {
+    color: #ff3f20;
+}
+
+/* 아이디 중복 확인 부분 */
+/* 아이디 사용 가능 */
+.duplicatedIdSuccessMsg {
+    color: #5776e7;
+}
+/* 아이디 중복 */
+.duplicatedIdFailMsg {
+    color: #f10e0e;
+}
+
+/* 비밀번호 보안 정도 */
+.securityLight {
+    color: #f10e0e;
+}
+
+.securityNormal {
+    color: #35e32a;
+}
+
+.securityStrength {
+    color: #2a8ee3;
+}
+
+.securityMoreStrength {
+    color: #5009c5;
+}
+
+/* login, pwd search 부분 */
+ul.searchType-container {
+
+}
+
+ul.searchType-container li {
+    float: left;
+    list-style-type: none;
+    width: 50%;
+}
+
+/* 그림자 만들기 */
+.makingShadow {
+    box-shadow: -5px -1px 0 2px rgba(0,0,150,0.7);
+}
+
+/* boardDetailForm */
+.boardDetailBox {
+    border-top: 1px solid #000000;
+    padding: 1rem 1rem 0 1rem;
+}
+
+/* boardDetailForm content 부분 */
+.boardDetailBox.contentBox {
+    padding: 3rem 3rem 3rem 1rem  ;
+    border-bottom: 1px solid #000000;
+}
+
+.boardDetailBox label {
+    display: inline-block;
+    width: 5rem;
+}
+
+.boardDetailBox .hitsBox {
+    display: inline-block;
+    margin-left: 2rem;
+}
+
+.boardDetailBox .hitsBoxLabel {
+    display: inline-block;
+    width: 3rem;
+}
+
+.boardDetailBox-contents {
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+/* boardDetailForm 내용 부분*/
+.boardDetailBox-contents.content {
+    width: 750px;
+    /* 단어 넘침 */
+    word-break: keep-all;
+    word-wrap: break-word;
+    /* 줄바꿈, 띄어쓰기 표시*/
+    white-space: pre-wrap;
+}
+
+/* memberDetailForm */
+.memberDetailBox {
+    border-top: 1px solid #000000;
+    padding: 1rem 1rem 0 1rem;
+}
+
+.memberDetailBox label {
+    display: inline-block;
+    width: 6rem;
+}
+
+.memberDetailBox-contents {
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+/* 아이디 찾기, 비밀번호 찾기 부분*/
+.search_line.idBox label, .search_line.nameAndEmail label, .search_line.nameAndPhone label {
+    /* line 어그러짐 방지 */
+    display: inline-block;
+    width: 11rem;
+}
+
+
+/* pc */
+@media (min-width: 768px){
+	body{
+		background-size: 244px 244px;
+		font-size: 16px;
+	}
+	header:before{
+		background-size: 190px 14px;
+		height: 10px;
+	}
+	.header-container{
+		margin: 0 auto;
+		padding: 30px 20px;
+	}
+	header h1{
+		/*
+		background-image: url();
+		*/
+		background-size: 198px 40px;
+		width: 198px;
+		height: 40px;
+	}
+	.contents-container{
+		padding: 40px;
+		border-radius: 10px;
+	}
+	.footer-container{
+		padding: 20px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

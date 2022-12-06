@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+/* font 모음 */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+/* css document */
+
+html * {
+    box-sizing: border-box;
+    min-height: 100%;
+}
+
+a {
+    color: #d9889b;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #e3a0b0;
+}
+
+body {
+    padding: 0;
+    background-image: url("/images/index_background.gif");
+    /*
+    background-size: ;
+    background-repeat: no-repeat;
+    */
+    font-family: 'Pacifico', cursive;
+    /*
+    background-size: 122px 122px;
+    font-family: ;
+    font-size: 14px;
+    */
+
+    /* scrollbar 관리*/
+    -ms-overflow-style: none; /* IE, Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.contents {
+
+}
+
+
+.contents-container {
+    box-sizing: border-box;
+    /*
+    background-color: #fff;
+    */
+    /*
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.2);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    /*
+    position: relative;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -50%);
+    */
+    font-size: 5rem;
+}

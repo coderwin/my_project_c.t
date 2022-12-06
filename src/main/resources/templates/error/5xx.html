@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header('error page')}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<header th:replace="~{fragments/bodyHeader :: header}">
+
+</header>
+
+<!-- 로그인 box -->
+<div class="contents">
+    <div class="contents-container">
+        <h2 th:text="|${status} 에러 발생!|">error appears</h2>
+        <p th:text="#{errors.5xx}">
+            dosen't exist
+        </p>
+        <a th:href="@{/board/list}" th:text="#{button.home}">home</a>
+    </div>
+</div>
+
+
+<footer th:replace="~{fragments/bodyFooter :: footer}">
+
+</footer>
+
+</body>
+</html>

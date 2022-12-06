@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header('회원가입 약속사항')}">
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+  <header th:replace="~{fragments/bodyHeader :: header}" class="header-container">
+
+  </header>
+
+  <div class="contents">
+    <div class="contents-container">
+      <form role="form" method="post" th:action th:object="${promiseForm}">
+        <!-- 개인정보 사용 동의 -->
+        <div class="form-group">
+          <div th:text="#{content.individualInformationAgreement}">
+
+          </div>
+          <input type="checkbox" th:field="*{individualInformationAgreement}"/>
+          <label th:for="individualInformationAgreement" th:text="#{answer.agree}">yes</label>
+        </div>
+
+        <!-- 회원가입 동의 -->
+        <div class="form-group">
+          <div th:text="#{content.memberJoinAgreement}">
+
+          </div>
+          <input type="checkbox" th:field="*{memberJoinAgreement}"/>
+          <label th:for="memberJoinAgreement" th:text="#{answer.agree}">yes</label>
+        </div>
+
+        <!-- button box -->
+        <div class="form-group">
+          <!-- next button -->
+          <button type="submit" th:text="#{button.next}"></button>
+
+          <!-- cancel button -->
+          <button type="button"
+                  onclick="|location.href='boardList.html'|"
+                  th:onclick="|location.href='@{/board/list}'|"
+                  th:text="#{button.cancel}">cancel</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <footer th:replace="~{fragments/bodyFooter :: footer}">
+
+  </footer>
+
+
+
+</body>
+</html>

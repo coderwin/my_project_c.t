@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- 로그인 전 header 상태 -->
+<header th:if="${session.LOGIN_MEMBER} == null" th:fragment="header">
+  <div>
+    <ul>
+      <li>
+        <a th:href="@{/login}" th:text="#{button.login}">로그인</a>
+      </li>
+      <li>
+        <a th:href="@{/join}" th:text="#{button.join}">회원가입</a>
+      </li>
+    </ul>
+    <div class="header-container">
+      <a href="/board/list">
+        <h1 class="header-logo" th:text="|C.T|">C.T 그림 자리</h1>
+        <h3 th:text='|(Communication Together)|'>Communication together</h3>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- 로그인 후 header 상태 -->
+<header th:if="${session.LOGIN_MEMBER} != null" class="header" th:fragment="header">
+  <div>
+    <ul>
+      <li th:text="|${session.LOGIN_MEMBER.memberId}님 반갑습니다|">하이님 반갑습니다</li>
+      <li>
+        <a th:href="@{/member/detail}" th:text="#{button.myPage}">myInfo</a>
+      </li>
+      <li>
+        <form class="logout-form" method="post" th:action="@{/logout}">
+          <button type="submit" th:text="#{button.logout}" >
+            로그아웃
+          </button>
+        </form>
+      </li>
+    </ul>
+    <div class="header-container">
+      <a href="/board/list">
+        <h1 class="header-logo" th:text="|C.T|">C.T 그림 자리</h1>
+        <h3 th:text='|(Communicate Together)|'>Communicate together</h3>
+      </a>
+    </div>
+  </div>
+</header>
+</html>

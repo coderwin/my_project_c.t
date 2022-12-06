@@ -1,0 +1,105 @@
+@charset "utf-8";
+
+h1 {
+    font-size: 24px;
+}
+
+input {
+    border: 1px solid #ccc;
+    width: 300px;
+    /*
+    font-family:
+    */
+    font-size: 16px;
+}
+
+input[type='checkbox'] {
+    margin: 0;
+    width: 20px;
+}
+
+label + textarea {
+    vertical-align: middle;
+}
+
+textarea {
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 90%;
+    height: 6.25rem;
+    /*
+    font-family:
+    */
+    font_size: 16px;
+    resize: none;
+}
+
+/* 댓글(reply) box */
+#replyContent, .replyUpdateContent {
+    width: 90%;
+    height: 6.25rem;
+    resize: none;
+}
+
+/* 유효성 검사 */
+input:required, input:invalid {
+    background: #ffb3b3;
+}
+
+input:valid {
+    background: transparent;
+}
+
+input:focus, textarea:focus {
+    background: #faf4e2;
+}
+
+input:[type="checkbox"] {
+    border: 1px solid #ccc;
+    width: 20px;
+    /*
+    font-family:
+    */
+    font-size: 16px;
+}
+
+/* 버튼 클릭 */
+button {
+    padding: 6px 20px;
+    border: 4px solid #ffd386;
+    border-radius: 10px;
+    background: #ff753e;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+button:hover {
+    background: #ffd386;
+}
+
+/* form에 있는 삭제 버튼*/
+#delete_btn {
+    display: inline-block;
+}
+
+/* header 로그인, 내정보, 로그아웃 부분 */
+header li button {
+    font-size: 1rem;
+    border: 0;
+    padding: 0;
+    outline: 0;
+    background-color: #ffffff;
+    color: #000000;
+    cursor: pointer;
+}
+
+/* 회원가입 아이디 중복 확인 <a> */
+button#confirmingDuplicatedIdBtn {
+    cursor: pointer;
+}
+
+/* boardlist 검색 부분*/
+.maincol-container input {
+    max-width: 230px;
+}

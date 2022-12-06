@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thmeleaf.org">
+<head th:replace="~{fragments/header :: headerInBoardListForm('게시판')}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <header th:replace="~{fragments/bodyHeader :: header}">
+
+    </header>
+
+    <div class="maincol">
+        <div class="maincol-container">
+            <!-- page 제목 -->
+            <h1>C.T board list</h1>
+
+            <!-- 검색 box -->
+            <form role="form" method="get" th:action th:object="${boardSearchCond}">
+
+                <!-- 작성자 -->
+                <label th:for="id" th:text="#{boardForm.id}"></label>
+                <input type="text" th:field="*{id}"  />
+
+                <!-- 제목 -->
+                <label th:for="title" th:text="#{boardForm.title}"></label>
+                <input type="text" th:field="*{title}"  />
+
+                <!-- 내용 -->
+                <label th:for="content" th:text="#{boardForm.content}"></label>
+                <input type="text" th:field="*{content}"  />
+
+                <!-- 작성날짜 -->
+                <label th:for="writingdate" th:text="#{boardForm.writingdate}"></label>
+                <input type="text" th:field="*{writingdate}" placeholder="ex)20220101" />
+
+                <button id="searchBtn" type="submit" th:text="#{button.search}"></button>
+            </form>
+
+            <!-- board list 보여주기 -->
+            <div class="news" th:if="${boardList.size} == 0">
+                <ul class="news-contents">
+                    <li th:class="boardLi" th:text="#{boardForm.list}">
+                        not exist.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="news" th:if="${boardList.size} != 0">
+                <ul th:each="board : ${boardList}" class="news-contents">
+                   <li th:class="boardLi">
+
+                       <!-- image -->
+                       <!-- uploadFileList가 있을 때 -->
+                       <img
+                               th:if="${board.uploadFileList.size()} != 0"
+                               th:src="|/board/images/${board.uploadFileList[0].storeFileName}|"
+                               th:class="|moreDetailBtn|"
+                               th:alt="${board.uploadFileList[0].uploadFileName}"
+                               th:title="${board.uploadFileList[0].uploadFileName}"
+                       />
+                       <!-- uploadFileList가 없을 때 -->
+                       <img
+                               th:if="${board.uploadFileList.size()} == 0"
+                               src="/images/no_image.png"
+                               class="moreDetailBtn"
+                               alt="NO_IMAGE"
+                               title="NO_IMAGE"
+                       />
+
+                       <!-- board num -->
+                       <input type="hidden" th:class="boardNum" th:value="${board.num}"/>
+
+                       <!-- title -->
+                       <p th:class="|title moreDetailBtn|">
+                           <span th:text="${board.boardTitle}">title</span>
+                           &nbsp;
+                           <img th:if="${board.boardRock} != ''" th:src="|/images/rock.png|" class="boardRockImage" />
+                       </p>
+
+                        <!-- content -->
+<!--                       <p th:class="content" th:text="${board.boardContent}">-->
+<!--                           content-->
+<!--                           <h5>-->
+<!--                               <span-->
+<!--                                   th:class="moreDetailBtn"-->
+<!--                                  th:text="더보기">더보기-->
+<!--                               </span>-->
+<!--                           </h5>-->
+<!--                       </p>-->
+                       <p>
+                           <!-- 좋아요 -->
+                           <span th:if="${session.LOGIN_MEMBER} != null" class="likeBox">
+                               <!-- login 한 경우 -->
+                               <img class="heartImage" src="/images/heart.png"/>
+                               <span th:text="#{boardForm.likes}">좋아요</span>
+                               <span class="likesSize" th:text="${board.likesList.size()}">10</span>
+                           </span>
+
+                           <span th:if="${session.LOGIN_MEMBER} == null" class="likeBox">
+                               <!-- login 안 한 경우 -->
+                               <img class="fakeHeartImage" src="/images/heart.png"/>
+                               <span th:text="#{boardForm.likes}">좋아요</span>
+                               <span class="likesSize" th:text="${board.likesList.size()}">10</span>
+                           </span>
+
+                           <!-- 조회수 -->
+                           <span th:text="|#{boardForm.hits} ${board.hits}|"> 조회수 </span>
+
+                           <!-- 작성자 -->
+                           <span th:text="|#{boardForm.id} ${board.memberId}|">
+                               author
+                           </span>
+
+                           <!-- 게시글 작성 날짜 -->
+                           <span th:text="|#{boardForm.writingdate} ${#temporals.format(board.boardWritingdate, 'yyyy-MM-dd')}|">
+
+                           </span>
+                       </p>
+                   </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- button box -->
+        <div>
+            <button type="button"
+                    th:text="#{boardForm.writing}"
+                    th:onclick="|location.href='@{/board/write}'|"
+            >write</button>
+        </div>
+
+        <!-- paging box -->
+        <div class="paging-container">
+            <div th:if="${paging} != null" th:utext="${paging}">
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer th:replace="~{fragments/bodyFooter :: footer}">
+
+    </footer>
+
+    <!-- javascript files -->
+    <script src="/js/boardList.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+  <footer th:fragment="footer">
+    <div class="footer-container">
+      <!-- 연락처 -->
+      <address>
+        <p>
+          <span th:text="#{footer.email}">email</span>
+          <span th:text="#{footer.self_email}">email</span>
+        </p>
+        <p>
+          <span th:text="#{footer.phone}">phone</span>
+          <span th:text="#{footer.self_phone}">phone</span>
+        </p>
+      </address>
+      <!-- 관련 기업 -->
+<!--      <ul>-->
+<!--        <li>a</li>-->
+<!--        <li>b</li>-->
+<!--        <li>c</li>-->
+<!--      </ul>-->
+
+      <!-- c.t logo -->
+      <div class="logo-container">
+        <img
+             class="logo_image"
+             src="/images/c.t_logo.png"
+             alt="C.T logo"/>
+      </div>
+
+
+  </footer>
+</body>
+</html>

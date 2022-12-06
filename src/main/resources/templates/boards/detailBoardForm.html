@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: headerInDetailBoardForm('게시글 상세보기')}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <header th:replace="~{fragments/bodyHeader :: header}">
+
+    </header>
+
+    <div class="contents">
+        <div class="contents-container">
+
+            <h1 th:text="#{boardForm.detail}">게시글 상세보기</h1>
+
+            <!-- 게시글 detail -->
+            <div>
+                <!-- 제목 -->
+                <div class="form-group boardDetailBox">
+                    <label th:for="title" th:text="#{boardForm.title}">title</label>
+                    <div class="boardDetailBox-contents" th:text="${boardDetailForm.title}"/>title</div>
+                </div>
+
+                <!-- 작성자 -->
+                <div class="form-group boardDetailBox">
+                    <label th:for="id" th:text="#{boardForm.id}">author</label>
+                    <div class="boardDetailBox-contents" th:text="${boardDetailForm.id}">id</div>
+                </div>
+
+                <!-- 작성일, 조회수 -->
+                <div class="form-group boardDetailBox">
+                    <!-- 작성일 -->
+                    <label th:for="writingdate" th:text="#{boardForm.writingdate}">writingdate</label>
+                    <div class="boardDetailBox-contents"
+                         th:text="${#temporals.format(boardDetailForm.writingdate, 'yyyy-MM-dd')}">writingdate</div>
+
+                    <!-- 조회수 -->
+                    <div class="hitsBox">
+                        <label class="hitsBoxLabel" th:for="hits" th:text="#{boardForm.hits}">hits</label>
+                        <div class="boardDetailBox-contents" th:text="${boardDetailForm.hits}">hits</div>
+                    </div>
+                </div>
+
+                <!-- 내용 -->
+                <div class="form-group boardDetailBox contentBox">
+<!--                    <label th:for="content" th:text="#{boardForm.content}">content</label>-->
+                    <div class="boardDetailBox-contents content" th:utext="${boardDetailForm.content}" >content</div>
+                </div>
+
+
+                <!-- 첨부파일 -->
+                <div th:if="${boardDetailForm.uploadFileList.size()} != 0" class="form-group image-group">
+                    <label th:for="uploadFile" th:text="#{boardForm.uploadFile}">uploadFile</label>
+                    <ul>
+                        <li th:each="uploadFile : ${boardDetailForm.uploadFileList}" >
+                            <!-- 첨부파일 다운로드 받기 click -->
+                            <a th:href="|/board/attach/${uploadFile.getNum()}|">
+                                <img th:src="|/board/images/${uploadFile.storeFileName}|"
+                                      th:alt="${uploadFile.uploadFileName}"
+                                      th:title="${uploadFile.uploadFileName}"
+                                />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- button box -->
+                <div class="form-group">
+                    <!-- 접속 회원과 같으면 보이기 -->
+                    <!-- 수정 button -->
+                    <span th:if="${session.LOGIN_MEMBER} != null and ${session.LOGIN_MEMBER.memberId} == ${boardDetailForm.id}" class="updateBtn">
+                        <button type="button"
+                                th:text="#{button.update}"
+                                th:onclick="|location.href='@{/board/{num}/edit (num=${boardDetailForm.num})}'|">update</button>
+                    </span>
+                    <!-- 삭제 button -->
+                    <span th:if="${session.LOGIN_MEMBER} != null and ${session.LOGIN_MEMBER.memberId} == ${boardDetailForm.id}">
+                        <form id="delete_btn" role="form" method="post" th:action="@{/board/{num}/delete (num=${boardDetailForm.num})}">
+                            <button type="submit" id="deleteSubmitBtn"  th:text="#{button.delete}" >delete</button>
+                        </form>
+                    </span>
+                    <!-- 목록 button -->
+                    <span>
+                        <button type="button"
+                                th:text="#{button.list}"
+                                th:onclick="|location.href='@{/board/list}'|">go to list</button>
+                    </span>
+
+        <!--            <ul th:if="${session.LOGIN_MEMBER} == null">-->
+        <!--                &lt;!&ndash; 목록 button &ndash;&gt;-->
+        <!--                <li>-->
+        <!--                    <button type="button"-->
+        <!--                            th:text="#{button.list}"-->
+        <!--                            th:onclick="|location.href='@{/board/list}'|">go to list</button>-->
+        <!--                </li>-->
+        <!--            </ul>-->
+                </div>
+            </div>
+
+            <!-- 댓글 show box -->
+            <div class="reply_box">
+                <div class="form-group reply_group">
+                    <h1 th:text="#{boardForm.reply}">댓글</h1>
+                    <!-- board 번호 -->
+                    <input type="hidden" id="boardNum" th:value="${boardDetailForm.num}" />
+                    <!-- 댓글 내용 입력 -->
+                    <div class="form-group">
+                        <textarea id="replyContent" placeholder="댓글을 입력하세요"></textarea>
+                    </div>
+                    <!-- 댓글 비밀번호 -->
+                    <div class="form-group">
+                        <label th:text="#{boardForm.rock}">rock</label>
+                        <input type="text" id="replyRock" placeholder="비밀글을 원하시면 비밀번호를 입력하세요" />
+                    </div>
+                    <!-- button box -->
+                    <!-- login인 한 경우 -->
+                    <div th:if="${session.LOGIN_MEMBER} != null" class="form-group">
+                        <button type="button" id="addReplyBtn" th:text="#{button.post}">post</button>
+                    </div>
+
+                    <!-- login인 안 한 경우 -->
+                    <div th:if="${session.LOGIN_MEMBER} == null" class="form-group">
+                        <button type="button" id="fakeAddReplyBtn" th:text="#{button.post}">post</button>
+                    </div>
+                </div>
+
+                <!-- 댓글 list box -->
+                <div class="form-group reply_group" th:if="${boardDetailForm.replyList.size} != 0">
+                    <ul>
+                        <li th:each="reply : ${boardDetailForm.replyList}"
+                            class="replyCollection">
+
+                            <!-- 비밀글일 때 -->
+                            <div th:if="${reply.replyRock} != ''">
+                                <!-- 댓글 작성자가 로그인 사용자 일 때, 게시글 작성자가 로그인 사용자 일때 -->
+                                <div th:class="replyCollection-contents" th:if="${session.LOGIN_MEMBER} != null and (${reply.member.memberId} == ${session.LOGIN_MEMBER.memberId} or ${boardDetailForm.id} == ${session.LOGIN_MEMBER.memberId})">
+                                    <!-- 댓글 번호 -->
+                                    <input type="hidden" class="replyNum" th:value="${reply.num}" />
+
+                                    <!-- 아이디 -->
+                                    <span class="replyIdInList" th:text="${reply.member.memberId}"></span>
+
+                                    <!-- 작성 날짜 -->
+                                    <span class="replyWritingdateInList" th:text="${#temporals.format(reply.replyWritingdate, 'yyyy-MM-dd')}">작성 날짜</span>
+
+                                    <!-- 댓글 내용 -->
+                                    <div class="form-group replyContentInListBox">
+                                        <div class="replyContentInList" th:text="${reply.replyContent}">
+                                            Hello~
+                                        </div>
+                                    </div>
+
+                                    <!-- 댓글 비밀번호 -->
+                                    <div class="form-group replyRockBox" th:if="${session.LOGIN_MEMBER} != null and ${session.LOGIN_MEMBER.memberId} == ${reply.member.memberId}">
+                                        <input type="hidden" class="replyRock" placeholder="비밀댓글을 원하시면 비밀번호를 입력하세요" th:value="${reply.replyRock}" />
+                                    </div>
+
+                                    <!-- reply button box -->
+                                    <div class="form-group" th:if="${session.LOGIN_MEMBER} != null and ${session.LOGIN_MEMBER.memberId} == ${reply.member.memberId}">
+                                        <!-- 수정 button -->
+                                        <button type="button" class="replyUpdateBtn" th:text="#{button.update}">update</button>
+                                        <!-- 삭제 button -->
+                                        <button type="button" class="replyDeleteBtn" th:text="#{button.delete}">delete</button>
+                                    </div>
+                                </div>
+
+                                <!-- 댓글 글쓴이와 로그인 사용자가 다르거나 게시글 작성자와 로그인 사용자 다를 때 -->
+                                <div th:if="${session.LOGIN_MEMBER} != null and (${reply.member.memberId} != ${session.LOGIN_MEMBER.memberId} and ${boardDetailForm.id} != ${session.LOGIN_MEMBER.memberId})">
+                                    <!-- 아이디 -->
+                                    <span class="replyIdInList" th:text="${reply.member.memberId}"></span>
+
+                                    <!-- 작성 날짜 -->
+                                    <span class="replyWritingdateInList" th:text="${#temporals.format(reply.replyWritingdate, 'yyyy-MM-dd')}">작성 날짜</span>
+
+                                    <!-- 댓글 내용 -->
+                                    <div class="form-group replyContentInListBox">
+                                        <div class="replyContentInList" th:text="#{boardForm.secret}">
+                                            It's a secret reply.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 비로그인 사용자 일 때 -->
+                                <div th:if="${session.LOGIN_MEMBER} == null">
+                                    <!-- 아이디 -->
+                                    <span class="replyIdInList" th:text="${reply.member.memberId}"></span>
+
+                                    <!-- 작성 날짜 -->
+                                    <span class="replyWritingdateInList" th:text="${#temporals.format(reply.replyWritingdate, 'yyyy-MM-dd')}">작성 날짜</span>
+
+                                    <!-- 댓글 내용 -->
+                                    <div class="form-group replyContentInListBox">
+                                        <div class="replyContentInList" th:text="#{boardForm.secret}">
+                                            It's a secret reply.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 비밀글이 아닐 때 -->
+                            <div th:class="replyCollection-contents" th:if="${reply.replyRock} == ''">
+                                <!-- 댓글 번호 -->
+                                <input type="hidden" class="replyNum" th:value="${reply.num}" />
+
+                                <!-- 아이디 -->
+                                <span class="replyIdInList" th:text="${reply.member.memberId}"></span>
+
+                                <!-- 작성 날짜 -->
+                                <span class="replyWritingdateInList" th:text="${#temporals.format(reply.replyWritingdate, 'yyyy-MM-dd')}">작성 날짜</span>
+
+                                <!-- 댓글 내용 -->
+                                <div class="form-group replyContentInListBox">
+                                    <div class="replyContentInList" th:text="${reply.replyContent}">
+                                        Hello~
+                                    </div>
+                                </div>
+
+                                <!-- 댓글 비밀번호 -->
+                                <div class="form-group replyRockBox" th:if="${session.LOGIN_MEMBER} != null and ${session.LOGIN_MEMBER.memberId} == ${reply.member.memberId}">
+                                    <input type="hidden" class="replyRock" placeholder="비밀댓글을 원하시면 비밀번호를 입력하세요" th:value="${reply.replyRock}" />
+                                </div>
+
+                                <!-- reply button box -->
+                                <div class="form-group" th:if="${session.LOGIN_MEMBER} != null and ${session.LOGIN_MEMBER.memberId} == ${reply.member.memberId}">
+                                    <!-- 수정 button -->
+                                    <button type="button" class="replyUpdateBtn" th:text="#{button.update}">update</button>
+                                    <!-- 삭제 button -->
+                                    <button type="button" class="replyDeleteBtn" th:text="#{button.delete}">delete</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer th:replace="~{fragments/bodyFooter :: footer}">
+
+    </footer>
+
+    <!-- javascript files -->
+    <script src="/js/detailBoardForm.js"></script>
+
+</body>
+</html>

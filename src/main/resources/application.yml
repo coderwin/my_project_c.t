@@ -1,0 +1,110 @@
+
+
+server:
+#  port:  # 서버 포트 변경하기
+
+  servlet.session:
+    timeout: 1800 # 세션 시간 설정(1800 = 30분)
+    tracking-mode: cookie # 쿠키 URL 전달 방식 끄고/키기
+
+  error:
+    whitelabel.enabled: false # whitelabel 오류 페이지 사용 여부
+
+    include-:
+      exception: false #exception 포함 여부
+      message: never # message 포함 여부
+      stacktrace: never #trace 포함 여부
+      binding-errors: never # errors 포함 여부
+
+spring:
+  datasource:
+    # h2
+#    url: jdbc:h2:tcp://localhost/~/ct
+#    username:
+#    password:
+#    driver-class-name: org.h2.Driver
+#    jpa.show-sql: true
+
+    # mysql
+    #local url
+#    url: jdbc:mysql://localhost:3306/ct?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+#    url: jdbc:mysql://localhost:3306/ct?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    # 배포 url
+    url: jdbc:mysql://52.78.159.253:3306/ct?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+    username:
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    jpa.show-sql: true
+
+  jpa:
+    hibernate:
+      ddl-auto: none # 에플리케이션 실행 시점에 테이블을 drop하고 다시 생성한다 // local: create, update, dev : validate, none
+    properties:
+      hibernate:
+#        show_sql: true # log가 아닌 System.out에 하이버네이트 실행 sql을 남긴다
+#      format_sql: true
+
+  logging.level:
+    org.hibernate.SQL: debug #logger를 통해 하이버네이트 실행 sql을 남긴다
+    org.hibernate.type: trace # 파라미터를 볼 수 있다, 쿼리문에서, ?에 들어갈
+#    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+#파일 업로드 사이즈 제한
+  servlet.multipart:
+    max-file-size: 1MB # 파일 하나의 최대 사이즈
+    max-request-size: 10MB # 멀티파트 요청 하나에 업로드한 파일 총 사이즈
+
+    enabled: true # 멀티파트 데이터 처리 설정(true / false)
+
+  # swagger 스프링부트 2.6버전 이상에서 사용하기
+  mvc.pathmatch.matching-strategy: ant_path_matcher
+
+# 내장 톰캣 서버의 maxSwallowSize를 설정해준다.
+# http form 요청 사이즈 설정
+server.tomcat:
+  max-swallow-size: -1
+  max-http-form-post-size: 10MB
+
+# 파일 용량 사이즈
+file.StorageCapacity: 10485760;
+
+# 중복
+spring.jpa.properties.hibernate.show_sql: true # 실행된 쿼리 출력
+spring.jpa.properties.hibernate.format_sql=: true  # 쿼리를 예쁘게 출력
+
+# 스프링 부트 메시지 설정 추가
+spring.messages:
+  basename: messages, errors # 메시지 파일 설정
+  fallback-to-system-locale: false # Locale에 따른 해당 파일 찾기(true, false)
+
+
+# 세션 만료 시간 설정
+session:
+  servlet.session.timeout: 1800 # 기본 30분(1800초)
+
+# 로깅 레벨 설정
+logging.level:
+#  root: debug # 글로벌(전체) 로깅 레벨 설정
+  hj.board.ct:
+        web: debug # 페키지 별로 로깅 레벨 설정
+
+##### 로컬 환경
+# 파일 업로드 경로 설정
+file.dir: "C:/my_project/upload/images/"
+# 폴더 생성 경로
+directory.dir: "C:/my_project/upload/images"
+
+
+##### 배포 환경
+# 파일 업로드 경로 설정
+#file.dir: /home/ec2-user/my_project/upload/images/
+# 폴더 생성 경로
+#directory.dir: /home/ec2-user/my_project/upload/images
+
+# 로컬 파일 웹에서 보이기
+#realFile.dir: /home/ec2-user/my_project23/my_project4/src/main/resources/static/images/ # 현재 사용 안 함
+
+
+
+
+

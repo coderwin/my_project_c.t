@@ -1,0 +1,35 @@
+
+spring:
+  #profile 범위 설정하기
+  profiles.active: test
+
+#  datasource:
+     # h2
+#    url: jdbc:h2:tcp://localhost/~/ct
+#    username:
+#    password:
+#    driver-class-name: org.h2.Driver
+
+    # mysql
+#    url: jdbc:mysql://localhost:9200/ct?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+#    username:
+#    password:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    spring.jpa.show-sql: true
+
+#  jpa:
+#    hibernate:
+#      ddl-auto: create # 에플리케이션 실행 시점에 테이블을 drop하고 다시 생성한다
+#    properties:
+#      hibernate:
+##        show_sql: true # log가 아닌 System.out에 하이버네이트 실행 sql을 남긴다
+#      format_sql: true
+
+  logging.level:
+    org.hibernate.SQL: debug #logger를 통해 하이버네이트 실행 sql을 남긴다
+#    org.hibernate.type: trace # 파라미터를 볼 수 있다, 쿼리문에서, ?에 들어갈
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+# 중복?
+#spring.jpa.properties.hibernate.show_sql: true # 실행된 쿼리 출력
+#spring.jpa.properties.hibernate.format_sql=: true  # 쿼리를 예쁘게 출력

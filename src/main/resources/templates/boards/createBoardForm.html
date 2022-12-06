@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header('게시글 작성하기')}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <header th:replace="~{fragments/bodyHeader :: header}">
+
+    </header>
+
+    <div class="contents">
+        <div class="contents-container">
+            <!-- 페이지 이름 -->
+            <h1>게시글 작성</h1>
+
+            <!-- 게시글 detail -->
+            <form role="form" method="post" th:action th:object="${boardForm}" enctype="multipart/form-data" >
+                <!-- 제목 -->
+                <div class="form-group">
+                    <label th:for="boardTitle" th:text="#{boardForm.title}">title</label>
+                    <input type="text" class="form-input" placeholder="제목을 입력하세요" th:field="*{boardTitle}"
+                           th:class="${#fields.hasErrors('boardTitle')} ? 'form-input fieldError' : 'form-input'"
+                    />
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('boardTitle')}" th:errors="*{boardTitle}">Incorrect data</p>
+                </div>
+
+                <!-- 내용 -->
+                <div class="form-group">
+                    <label th:for="boardContent" th:text="#{boardForm.content}">content</label>
+                    <textarea class="form-input" placeholder="내용을 입력하세요" th:field="*{boardContent}"
+                              th:class="${#fields.hasErrors('boardContent')} ? 'form-input fieldError' : 'form-input'"
+                    ></textarea>
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('boardContent')}" th:errors="*{boardContent}">Incorrect data</p>
+                </div>
+
+                <!-- 첨부파일 -->
+                <div class="form-group">
+                    <label th:for="multipartFileList" th:text="#{boardForm.uploadFile}">name</label>
+                    <input type="file" multiple="multiple" th:field="*{multipartFileList}"
+                           th:class="${#fields.hasErrors('multipartFileList')} ? 'form-input fieldError fileList' : 'form-input'"
+                    />
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('multipartFileList')}" th:errors="*{multipartFileList}">Incorrect data</p>
+                </div>
+
+                <!-- 비밀글 -->
+                <div class="form-group">
+                    <label th:for="boardRock" th:text="#{boardForm.rock}">rock</label>
+                    <input type="password" class="form-input" th:field="*{boardRock}"
+                           th:class="${#fields.hasErrors('boardRock')} ? 'form-input fieldError' : 'form-input'"
+                    />
+                    <button type="button" class="showPwd" th:text="#{button.showPwd}">show</button>
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('boardRock')}" th:errors="*{boardRock}">Incorrect data</p>
+                </div>
+
+                <!-- button box -->
+                <div class="form-group">
+
+                    <!-- 등록 button -->
+                    <button type="submit" th:text="#{button.post}">post</button>
+
+                    <!-- 취소 button -->
+                    <button type="button"
+                            th:text="#{button.cancel}"
+                            th:onclick="|location.href='@{/board/list}'|">cancel</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer th:replace="~{fragments/bodyFooter :: footer}">
+
+    </footer>
+
+    <!-- javascript files -->
+    <script src="/js/button.js"></script>
+    <script src="/js/file_size_check.js"></script>
+
+</body>
+</html>

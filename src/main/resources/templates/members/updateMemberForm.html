@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header('내정보 수정하기')}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <header th:replace="~{fragments/bodyHeader :: header}">
+
+    </header>
+
+    <div class="contents">
+        <div class="contents-container">
+            <!-- 페이지 이름 -->
+            <h1 th:text="#{memberForm.update}">내정보 수정하기</h1>
+
+            <!-- 수정 form -->
+            <form role="form" method="post" th:action="@{/member/update}" th:object="${memberUpdateForm}">
+                <!-- 아이디 -->
+                <div class="form-group">
+                    <label th:for="memberId" th:text="#{memberForm.id}">id</label>
+                    <input type="text" class="form-input" placeholder="아이디를 입력하세요" th:field="*{memberId}"
+                        th:class="${#fields.hasErrors('memberId')} ? 'form-input fieldError' : 'form-input'"
+                    />
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('memberId')}" th:errors="*{memberId}">Incorrect data</p>
+                </div>
+
+                <!-- 비밀번호 -->
+                <div class="form-group">
+                    <label th:for="memberPwd" th:text="#{memberForm.pwd}">pwd</label>
+                    <input type="text" class="form-input" placeholder="비밀번호를 입력하세요" th:field="*{memberPwd}"
+                           th:class="${#fields.hasErrors('memberPwd')} ? 'form-input fieldError' : 'form-input'"
+                    />
+                    <button type="button" class="showPwd" th:text="#{button.showPwd}">show</button>
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('memberPwd')}" th:errors="*{memberPwd}">Incorrect data</p>
+                </div>
+
+                <!-- 비밀번호 확인 -->
+                <div class="form-group">
+                    <label th:for="memberPwdConfirm" th:text="#{memberForm.pwdConfirm}">pwdC</label>
+                    <input type="password" class="form-input" placeholder="비밀번호 확인" th:field="*{memberPwdConfirm}"
+                           th:class="${#fields.hasErrors('memberPwdConfirm')} ? 'form-input fieldError' : 'form-input'"
+                    />
+                    <button type="button" class="showPwd" th:text="#{button.showPwd}">show</button>
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('memberPwdConfirm')}" th:errors="*{memberPwdConfirm}">Incorrect data</p>
+                </div>
+
+                <!-- 이름 -->
+                <div class="form-group">
+                    <label th:for="memberName" th:text="#{memberForm.name}">name</label>
+                    <input type="text" class="form-input" placeholder="이름을 입력하세요" th:field="*{memberName}"
+                           th:class="${memberName} ? 'form-input fieldError' : 'form-input'"
+                    />
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('memberName')}" th:errors="*{memberName}">Incorrect data</p>
+                </div>
+
+                <!-- 이메일 -->
+                <div class="form-group">
+                    <label th:for="memberEmail" th:text="#{memberForm.email}">e</label>
+                    <input type="text" class="form-input" placeholder="이메일을 입력하세요 ex)hello@naver.com" th:field="*{memberEmail}"
+                           th:class="${#fields.hasErrors('memberEmail')} ? 'form-input fieldError' : 'form-input'"
+                    />
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('memberEmail')}" th:errors="*{memberEmail}">Incorrect data</p>
+                </div>
+
+                <!-- 휴대전화 -->
+                <div class="form-group">
+                    <label th:for="phone1" th:text="#{memberForm.mobilePhone}">휴대전화</label>
+                    <input type="text" class="form-input" placeholder="휴대전화를 입력하세요 ex)01012341234" th:field="*{memberPhone1}"
+                           th:class="${#fields.hasErrors('memberPhone1')} ? 'form-input fieldError' : 'form-input'"
+                    />
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('memberPhone1')}" th:errors="*{memberPhone1}">Incorrect data</p>
+                </div>
+
+                <!-- 집전화 -->
+                <div class="form-group">
+                    <label th:for="phone2" th:text="#{memberForm.phoneCall}">집전화</label>
+                    <input type="text" class="form-input" placeholder="집전화번호를 입력하세요 ex)021231234" th:field="*{memberPhone2}" maxlength="11"
+                           th:class="${#fields.hasErrors('memberPhone2')} ? 'form-input fieldError' : 'form-input'"
+                    />
+<!--                    &lt;!&ndash; error 사항 &ndash;&gt;-->
+<!--                    <p class="fieldError" th:if="${#fields.hasErrors('memberPhone2')}" th:errors="*{memberPhone2}">Incorrect data</p>-->
+                </div>
+
+                <!-- 생일 -->
+                <div class="form-group">
+                    <label th:for="memberBirthday" th:text="#{memberForm.birthday}">생일</label>
+                    <input type="text" class="form-input" placeholder="생년월일을 입력하세요 ex)20220303" th:field="*{memberBirthday} "
+                           th:class="${#fields.hasErrors('memberBirthday')} ? 'form-input fieldError' : 'form-input'"
+                    />
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('memberBirthday')}" th:errors="*{memberBirthday}">Incorrect data</p>
+                </div>
+
+                <!-- button box -->
+                <div class="form-group">
+                    <button type="submit" th:text="#{button.confirm}">confirm</button>
+                    <button type="button"
+                            onclick="|location.href='detailMember.html'|"
+                            th:onclick="|location.href='@{/member/detail}'|"
+                            th:text="#{button.cancel}">cancel
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <footer th:replace="~{fragments/bodyFooter :: footer}">
+
+    </footer>
+
+    <!-- javascript files -->
+    <script src="/js/button.js"></script>
+    <script src="/js/writeInputDeleteErrorMsg.js"></script>
+
+</body>
+</html>

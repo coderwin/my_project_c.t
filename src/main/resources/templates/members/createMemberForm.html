@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header('회원가입')}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <header th:replace="~{fragments/bodyHeader :: header}">
+
+    </header>
+
+    <div class="contents">
+        <div class="contents-container">
+            <form role="form" method="post" th:action="@{/join/detail}" th:object="${memberForm}">
+                <!-- 아이디 -->
+                <div class="form-group">
+                    <span class="essentialBox" th:text="|*|">*</span>
+                    <label th:for="memberId" th:text="#{memberForm.id}">id</label>
+                    <input type="text" class="form-input" placeholder="아이디를 입력하세요" th:field="*{memberId}"
+                        th:class="${#fields.hasErrors('memberId')} ? 'form-input fieldError' : 'form-input'"
+                    />
+                    <button type="button" id="confirmingDuplicatedIdBtn" th:text="#{button.confirmingDuplicatedId}">Duplicated Id</button>
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('memberId')}" th:errors="*{memberId}">Incorrect data</p>
+                </div>
+
+                <!-- 비밀번호 -->
+                <div class="form-group">
+                    <span class="essentialBox" th:text="|*|">*</span>
+                    <label th:for="memberPwd" th:text="#{memberForm.pwd}">pwd</label>
+                    <input type="text" class="form-input" placeholder="영소문자, 숫자, 특수기호 포함 8~21자리" th:field="*{memberPwd}"
+                           th:class="${#fields.hasErrors('memberPwd')} ? 'form-input fieldError' : 'form-input'"
+                    />
+                    <!-- 비밀번호 보안 정도 알림 -->
+                    <span id="securityOfPwd"></span>
+                    <button type="button" class="showPwd" th:text="#{button.showPwd}">show</button>
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('memberPwd')}" th:errors="*{memberPwd}">Incorrect data</p>
+                </div>
+
+                <!-- 비밀번호 확인 -->
+                <div class="form-group">
+                    <span class="essentialBox" th:text="|*|">*</span>
+                    <label th:for="memberPwdConfirm" th:text="#{memberForm.pwdConfirm}">pwdC</label>
+                    <input type="text" class="form-input" placeholder="비밀번호 확인" th:field="*{memberPwdConfirm}"
+                           th:class="${#fields.hasErrors('memberPwdConfirm')} ? 'form-input fieldError' : 'form-input'"
+                    />
+                    <button type="button" class="showPwd" th:text="#{button.showPwd}">show</button>
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('memberPwdConfirm')}" th:errors="*{memberPwdConfirm}">Incorrect data</p>
+                </div>
+
+                <!-- 이름 -->
+                <div class="form-group">
+                    <span class="essentialBox" th:text="|*|">*</span>
+                    <label th:for="memberName" th:text="#{memberForm.name}">name</label>
+                    <input type="text" class="form-input" placeholder="이름을 입력하세요" th:field="*{memberName}"
+                           th:class="${memberName} ? 'form-input fieldError' : 'form-input'"
+                    />
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('memberName')}" th:errors="*{memberName}">Incorrect data</p>
+                </div>
+
+                <!-- 이메일 -->
+                <div class="form-group">
+                    <span class="essentialBox" th:text="|*|">*</span>
+                    <label th:for="memberEmail" th:text="#{memberForm.email}">e</label>
+                    <input type="text" class="form-input" placeholder="이메일을 입력하세요 ex)hello@naver.com" th:field="*{memberEmail}"
+                           th:class="${#fields.hasErrors('memberEmail')} ? 'form-input fieldError' : 'form-input'"
+                    />
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('memberEmail')}" th:errors="*{memberEmail}">Incorrect data</p>
+                </div>
+
+                <!-- 휴대전화 -->
+                <div class="form-group">
+                    <span class="essentialBox" th:text="|*|">*</span>
+                    <label th:for="phone1" th:text="#{memberForm.mobilePhone}">휴대전화</label>
+                    <input type="text" class="form-input" placeholder="휴대전화를 입력하세요 ex)01012341234" th:field="*{phone1}"
+                           th:class="${#fields.hasErrors('phone1')} ? 'form-input fieldError' : 'form-input'"
+                    />
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('phone1')}" th:errors="*{phone1}">Incorrect data</p>
+                </div>
+
+                <!-- 집전화 -->
+                <div class="form-group">
+                    &nbsp;&nbsp;<label th:for="phone2" th:text="#{memberForm.phoneCall}">집전화</label>
+                    <input type="text" class="form-input" placeholder="집전화번호를 입력하세요 ex)021231234" th:field="*{phone2}" maxlength="11"
+                           th:class="${#fields.hasErrors('phone2')} ? 'form-input fieldError' : 'form-input'"
+                    />
+<!--                    &lt;!&ndash; error 사항 &ndash;&gt;-->
+<!--                    <p class="fieldError" th:if="${#fields.hasErrors('phone2')}" th:errors="*{phone2}">Incorrect data</p>-->
+                </div>
+
+                <!-- 생일 -->
+                <div class="form-group">
+                    <span class="essentialBox" th:text="|*|">*</span>
+                    <label th:for="memberBirthday" th:text="#{memberForm.birthday}">생일</label>
+                    <input type="text" class="form-input" placeholder="생년월일을 입력하세요 ex)20220303" th:field="*{memberBirthday}"
+                           th:class="${#fields.hasErrors('memberBirthday')} ? 'form-input fieldError' : 'form-input'"
+                    />
+                    <!-- error 사항 -->
+                    <p class="fieldError" th:if="${#fields.hasErrors('memberBirthday')}" th:errors="*{memberBirthday}">Incorrect data</p>
+                </div>
+
+                <!-- 회원가입 동의 체크 -->
+                <input type="hidden"
+                       th:name="individualInformationAgreement"
+                       th:value="${promiseForm.individualInformationAgreement}" />
+                <input type="hidden"
+                       th:name="memberJoinAgreement"
+                       th:value="${promiseForm.memberJoinAgreement}"/>
+
+                <!-- button box -->
+                <div class="form-group">
+                    <!-- 회원가입 button -->
+                    <button type="submit" th:text="#{button.join}"></button>
+
+                    <!-- 취소 button -->
+                    <button type="button"
+                            onclick="|location.href='boardList.html'|"
+                            th:onclick="|location.href='@{/board/list}'|"
+                            th:text="#{button.cancel}">cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <footer th:replace="~{fragments/bodyFooter :: footer}">
+
+    </footer>
+
+    <!-- javascript files -->
+    <script src="/js/member.js"></script>
+    <script src="/js/button.js"></script>
+    <script src="/js/writeInputDeleteErrorMsg.js"></script>
+</body>
+</html>
