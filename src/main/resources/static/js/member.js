@@ -32,7 +32,7 @@ let confirmDuplicatedId = function() {
 
         $.ajax({
             url: `/join/validation/${memberId}`,
-            method: 'POST',
+            method: 'GET',
             dataType: 'json'
         })
         .done(function(data) {

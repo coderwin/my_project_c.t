@@ -90,16 +90,16 @@ logging.level:
 
 ##### 로컬 환경
 # 파일 업로드 경로 설정
-file.dir: "C:/my_project/upload/images/"
+#file.dir: "C:/my_project/upload/images/"
 # 폴더 생성 경로
-directory.dir: "C:/my_project/upload/images"
+#directory.dir: "C:/my_project/upload/images"
 
 
 ##### 배포 환경
 # 파일 업로드 경로 설정
-#file.dir: /home/ec2-user/my_project/upload/images/
+file.dir: /home/ec2-user/my_project/upload/images/
 # 폴더 생성 경로
-#directory.dir: /home/ec2-user/my_project/upload/images
+directory.dir: /home/ec2-user/my_project/upload/images
 
 # 로컬 파일 웹에서 보이기
 #realFile.dir: /home/ec2-user/my_project23/my_project4/src/main/resources/static/images/ # 현재 사용 안 함

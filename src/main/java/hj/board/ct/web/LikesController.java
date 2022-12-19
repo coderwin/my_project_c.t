@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
+@RequestMapping("/board/likes")
 public class LikesController {
 
     private final LikesService likesService;
@@ -23,7 +24,7 @@ public class LikesController {
      *  - 0면 heart.png로 나타난다
      *  - 1면 fullheart.png로 나타난다
      */
-    @GetMapping("/likes/board/init")
+    @GetMapping
     @ApiOperation(value = "게시글 좋아요 출력")
     public int startLikesImage(Long boardNum, HttpServletRequest request) {
 
@@ -48,7 +49,7 @@ public class LikesController {
     /**
      * likes 추가하기
      */
-    @PostMapping("/likes/board/save")
+    @PostMapping
     @ApiOperation(value = "게시글 좋아요 저장")
     public void createLikes(Long boardNum,
                            @SessionAttribute(
@@ -69,7 +70,7 @@ public class LikesController {
     /**
      * likes 삭제하기
      */
-    @PostMapping("/likes/board/delete")
+    @DeleteMapping
     @ApiOperation(value = "게시글 좋아요 삭제")
     public void deleteLikes(Long boardNum,
                            @SessionAttribute(

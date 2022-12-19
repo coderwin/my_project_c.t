@@ -62,7 +62,7 @@ let showLikesImage = function() {
 
         // ajax 통신
         $.ajax({
-            url: "/likes/board/init",
+            url: "/board/likes",
             data: {
                 'boardNum': boardNum
             },
@@ -105,7 +105,7 @@ let changeLikesImage = function() {
         if($(this).find(".heartImage").attr('src') === '/images/heart.png') {
             // db에 likes 추가하기
             $.ajax({
-                url: `/likes/board/save`,
+                url: `/board/likes`,
                 data: {
                     'boardNum': boardNum
                 },
@@ -127,11 +127,11 @@ let changeLikesImage = function() {
         } else if($(this).find(".heartImage").attr('src') === '/images/fullheart.png') {
             // db에 likes 삭제하
             $.ajax({
-                url: `/likes/board/delete`,
+                url: `/board/likes`,
                 data: {
                     'boardNum': boardNum
                 },
-                method: "POST"
+                method: "DELETE"
             })
             .done(function(data) {
                 // 이미지 '/images/fullheart.png'로 바꾸기

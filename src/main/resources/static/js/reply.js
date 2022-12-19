@@ -43,7 +43,7 @@ let createReply = function() {
 
         // ajax 생성
         $.ajax({
-            url: `/reply/board/${boardNum}/write`,
+            url: `/board/${boardNum}/reply`,
             data: JSON.stringify(data),
             method: "POST",
             contentType: "application/json; charset=utf-8",
@@ -151,9 +151,9 @@ let updateReply = function() {
 
         // ajax 생성
         $.ajax({
-            url: `/reply/board/${replyNum}/edit`,
+            url: `/board/reply/${replyNum}`,
             data: JSON.stringify(data),
-            method: "POST",
+            method: "PATCH",
             contentType: "application/json; charset=utf-8",
             dataType: "text"
         })
@@ -185,8 +185,8 @@ let deleteReply = function() {
         console.log("delete replyNum : ", replyNum);
         // ajax 실행
         $.ajax({
-            url: `/reply/board/${replyNum}/delete`,
-            method: 'POST',
+            url: `/board/reply/${replyNum}`,
+            method: 'DELETE',
             contentType: 'application/json; charset:utf-8',
             dataType: 'text'
         })

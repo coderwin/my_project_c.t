@@ -172,7 +172,7 @@ public class MemberJoinController {
     /**
      * 아이디 중복 확인
      */
-    @PostMapping("/join/validation/{id}")
+    @GetMapping("/join/validation/{id}")
     @ApiOperation(value = "아이디 중복 확인")
     public @ResponseBody Map<String, String> confirmingDuplicatedId(@PathVariable String id) {
 

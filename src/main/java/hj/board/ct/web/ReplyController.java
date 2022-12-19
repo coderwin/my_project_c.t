@@ -25,7 +25,7 @@ public class ReplyController {
     /**
      * 댓글 저장하기
      */
-    @PostMapping("/reply/board/{boardNum}/write")
+    @PostMapping("/board/{boardNum}/reply")
     @ApiOperation(value = "댓글 등록")
     public void createReply(
             @PathVariable Long boardNum,
@@ -41,7 +41,7 @@ public class ReplyController {
     /**
      * 댓글 수정하기
      */
-    @PostMapping("/reply/board/{replyNum}/edit")
+    @PatchMapping("/board/reply/{replyNum}")
     @ApiOperation(value = "댓글 수정")
     public void updateReply(@PathVariable Long replyNum,
                             @RequestBody ReplyUpdateForm replyUpdateForm) {
@@ -52,7 +52,7 @@ public class ReplyController {
     /**
      * 댓글 삭제하기
      */
-    @PostMapping("/reply/board/{replyNum}/delete")
+    @DeleteMapping("/board/reply/{replyNum}")
     @ApiOperation(value = "댓글 삭제")
     public void deleteReply(@PathVariable Long replyNum) {
 
