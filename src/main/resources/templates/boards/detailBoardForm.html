@@ -78,7 +78,7 @@
                     </span>
                     <!-- 삭제 button -->
                     <span th:if="${session.LOGIN_MEMBER} != null and ${session.LOGIN_MEMBER.memberId} == ${boardDetailForm.id}">
-                            <form id="delete_btn" role="form" method="post" th:action="@{/board/{num}/delete (num=${boardDetailForm.num})}">
+                        <form id="delete_btn" role="form" method="post" th:action="@{/board/{num}/delete (num=${boardDetailForm.num})}">
                             <button type="submit" id="deleteSubmitBtn"  th:text="#{button.delete}" >delete</button>
                         </form>
                     </span>
