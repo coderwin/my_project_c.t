@@ -23,7 +23,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 .excludePathPatterns("/", "/index.html", "/login", "/logout", "/join/**",
                         "/css/**", "/js/**", "/*.ico", "/error", "/board/list",
-                        "/lookforid/**", "/lookforpwd/**", "/board/{num}/detail", "/images/**", "/board/images/**", "/board/get/**",
+                        "/lookforid/**", "/lookforpwd/**", "/board/{num}/detail", "/images/**", "/board/images/**", "/board/pwd/**",
                         "/board/attach/**"); // /error, "/*.ico"
 
 //        // 파일 저장용량 인터셉터 등록
