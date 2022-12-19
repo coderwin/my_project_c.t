@@ -23,8 +23,8 @@ let deleteUploadFiles = function() {
 
             // ajax로 uploadFile delete 하기
             $.ajax({
-                url: `/board/delete/${uploadFileNum}/uploadFile`,
-                method: 'POST'
+                url: `/board/uploadFile/${uploadFileNum}`,
+                method: 'DELETE'
             })
             .done(function(data) {
                 // 완료 하면 삭제되었다 말하기

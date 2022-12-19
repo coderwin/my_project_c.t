@@ -395,7 +395,7 @@ public class BoardController {
     /**
      * 게시글 비밀번호 가져오기
      */
-    @PostMapping("/get/{boardNum}/pwd")
+    @GetMapping("/pwd/{boardNum}")
     @ApiOperation(value = "게시글 비밀번호 조회")
     public @ResponseBody BoardPwdForm getBoardPwd(@PathVariable Long boardNum) {
 
@@ -417,7 +417,7 @@ public class BoardController {
     /**
      * uploadFile 삭제하기
      */
-    @PostMapping("/delete/{num}/uploadFile")
+    @DeleteMapping("/uploadFile/{num}")
     @ApiOperation(value = "게시글 첨부파일 삭제")
     public @ResponseBody void deleteUploadFile(@PathVariable Long num) {
         log.info("uploadFile 삭제 시작 num : {}", num);

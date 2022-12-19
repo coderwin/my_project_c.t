@@ -28,8 +28,8 @@ let isBoardPwd = function() {
 
         // 게시글 비밀번호 가져오기
         $.ajax({
-            url: `/board/get/${boardNum}/pwd`,
-            method: "POST",
+            url: `/board/pwd/${boardNum}`,
+            method: "GET",
             dataType: "json"
         })
         .done(function(data) {
