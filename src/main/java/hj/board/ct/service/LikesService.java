@@ -30,7 +30,7 @@ public class LikesService {
     /**
      * /board/list 요청 시 Likes의 처음 이미지 결정한다 - test 코드 만들기
      */
-    public int determineInitImage(Long boardNum, HttpSession session) {
+    public int determineInitImage(Integer boardNum, HttpSession session) {
 
         LoginMemberFormInSession loginMemberFormInSession
                 = (LoginMemberFormInSession)session.getAttribute(SessionConst.LOGIN_MEMBER);
@@ -59,7 +59,7 @@ public class LikesService {
      * likes 저장하기 - test 코드 만들기
      */
     @Transactional
-    public void saveLikes(Long boardNum, String memberId) {
+    public void saveLikes(Integer boardNum, String memberId) {
 
         // board 불러오기
         Board findBoard = boardRepository.findByNum(boardNum).orElseThrow(
@@ -82,7 +82,7 @@ public class LikesService {
      * likes 삭제하기 - test 코드 만들기
      */
     @Transactional
-    public void deleteLikes(Long boardNum, String memberId) {
+    public void deleteLikes(Integer boardNum, String memberId) {
 
         // board 불러오기
         Board findBoard = boardRepository.findByNum(boardNum).orElseThrow(

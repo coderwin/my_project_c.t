@@ -26,7 +26,7 @@ public class LikesController {
      */
     @GetMapping
     @ApiOperation(value = "게시글 좋아요 출력")
-    public int startLikesImage(Long boardNum, HttpServletRequest request) {
+    public int startLikesImage(Integer boardNum, HttpServletRequest request) {
 
         if(boardNum == null) {
             return 0;
@@ -51,7 +51,7 @@ public class LikesController {
      */
     @PostMapping
     @ApiOperation(value = "게시글 좋아요 저장")
-    public void createLikes(Long boardNum,
+    public void createLikes(Integer boardNum,
                            @SessionAttribute(
                                    name = SessionConst.LOGIN_MEMBER,
                                    required = false
@@ -72,7 +72,7 @@ public class LikesController {
      */
     @DeleteMapping
     @ApiOperation(value = "게시글 좋아요 삭제")
-    public void deleteLikes(Long boardNum,
+    public void deleteLikes(Integer boardNum,
                            @SessionAttribute(
                                    name = SessionConst.LOGIN_MEMBER,
                                    required = false)

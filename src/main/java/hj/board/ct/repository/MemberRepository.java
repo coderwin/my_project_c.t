@@ -39,7 +39,7 @@ public class MemberRepository {
     /**
      * member_num으로 회원 찾기
      */
-    public Member findByNum(Long num) {
+    public Member findByNum(Integer num) {
         return em.find(Member.class, num);
     }
 

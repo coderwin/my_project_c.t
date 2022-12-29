@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class LoginMemberFormInSession {
 
-    private Long memberNum; // 회원가입 번호
+    private Integer memberNum; // 회원가입 번호
     private String memberId; // 회원 아이디
     private String memberName; // 회원 이름
 
@@ -21,7 +21,7 @@ public class LoginMemberFormInSession {
      * LoginMemberFormInSession 생성
      */
     public static LoginMemberFormInSession createLoginMemberFormInSession(
-            Long num,
+            Integer num,
             String id,
             String name
     ) {

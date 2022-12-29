@@ -29,7 +29,7 @@ public class ReplyService {
      * 저장하기
      */
     @Transactional
-    public void saveReply(ReplyForm replyForm, Long boardNum, String memberId) {
+    public void saveReply(ReplyForm replyForm, Integer boardNum, String memberId) {
 
         // member 불러오기
         Member member = memberRepository.findById(memberId).orElseThrow(() ->
@@ -54,7 +54,7 @@ public class ReplyService {
      * 수정하기
      */
     @Transactional
-    public void updateReply(Long replyNum, ReplyUpdateForm replyUpdateForm) {
+    public void updateReply(Integer replyNum, ReplyUpdateForm replyUpdateForm) {
         // reply 불러오기
         Reply findReply = replyRepository.findByNum(replyNum);
 
@@ -65,7 +65,7 @@ public class ReplyService {
     }
 
     @Transactional
-    public void deleteReply(Long replyNum) {
+    public void deleteReply(Integer replyNum) {
 
         Reply findReply = replyRepository.findByNum(replyNum);
 

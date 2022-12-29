@@ -23,7 +23,7 @@ import java.util.List;
 @EqualsAndHashCode
 public class BoardDetailForm {
 
-    private Long num; // 게시글 번호
+    private Integer num; // 게시글 번호
     private String id; // 작성자 id
     private String title; // 게시글 제목
     private String content; // 게시글 내용
@@ -36,7 +36,7 @@ public class BoardDetailForm {
 
     // **생성 로직** //
     public static BoardDetailForm createBoardDetailForm(
-            Long num,
+            Integer num,
             String id,
             String title,
             String content,
@@ -66,7 +66,7 @@ public class BoardDetailForm {
      * - content length = 10000에 의해서 보류
      */
     public static BoardDetailForm createBoardDetailFormV2(
-            Long num,
+            Integer num,
             String id,
             String title,
             String content,

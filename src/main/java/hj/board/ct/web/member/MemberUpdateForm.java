@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 @ToString
 public class MemberUpdateForm {
 
-    private Long memberNum; // 회원가입 번호/순서 // 나중에 정리하기
+    private Integer memberNum; // 회원가입 번호/순서 // 나중에 정리하기
 //    @NotBlank
     private String memberName; // 회원 이름
 //    @NotBlank
@@ -36,7 +36,7 @@ public class MemberUpdateForm {
     public MemberUpdateForm() {
     }
 
-    public MemberUpdateForm(Long memberNum, String memberName, String memberId, String memberPwd, String memberEmail, String memberPhone1, String memberPhone2, String memberBirthday) {
+    public MemberUpdateForm(Integer memberNum, String memberName, String memberId, String memberPwd, String memberEmail, String memberPhone1, String memberPhone2, String memberBirthday) {
         this.memberNum = memberNum;
         this.memberName = memberName;
         this.memberId = memberId;
@@ -50,7 +50,7 @@ public class MemberUpdateForm {
     // == 생성 메서드 == //
     /////// 서비스의 readMoreMember() 에서 사용
     public static MemberUpdateForm createMemberUpdateForm(
-            Long num,
+            Integer num,
             String id,
             String pwd,
             String name,

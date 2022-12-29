@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Getter @Setter
 public class BoardViewForm {
 
-    private Long num;// 게시글 번호
+    private Integer num;// 게시글 번호
     private String memberId; // 작성자 id
     private String boardTitle; // 게시글 제목
     private String boardContent; // 게시글 내용
@@ -33,7 +33,7 @@ public class BoardViewForm {
 
     // ** 생성 메서드 ** //
     public static BoardViewForm createBoardForm(
-            Long num,
+            Integer num,
             String id,
             String title,
             String content,
@@ -59,7 +59,7 @@ public class BoardViewForm {
 
     // BoardViewForm 생성 -- boardService에 사용
     public static BoardViewForm createBoardForm(
-            Long num,
+            Integer num,
             String id,
             String title,
             String content,

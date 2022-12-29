@@ -26,7 +26,7 @@ public class QReply extends EntityPathBase<Reply> {
 
     public final QMember member;
 
-    public final NumberPath<Long> num = createNumber("num", Long.class);
+    public final NumberPath<Integer> num = createNumber("num", Integer.class);
 
     public final StringPath replyContent = createString("replyContent");
 

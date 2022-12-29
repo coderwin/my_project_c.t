@@ -31,7 +31,7 @@ public class BoardService {
      * 게시글 저장하기
      */
     @Transactional
-    public Long saveBoardV2(Board board){
+    public Integer saveBoardV2(Board board){
 
         // 게시글 저장하기
         boardRepository.save(board);
@@ -44,7 +44,7 @@ public class BoardService {
      * 게시글 수정하기
      */
     @Transactional// 데이터 수정 가능
-    public void updateBoard(Long boardNum, BoardUpdateForm boardUpdateForm) {
+    public void updateBoard(Integer boardNum, BoardUpdateForm boardUpdateForm) {
         // board 가져오기
         Board board = boardRepository.findByNum(boardNum).orElse(null);
 
@@ -61,7 +61,7 @@ public class BoardService {
      * 게시글 삭제하기
      */
     @Transactional
-    public void deleteBoard(Long boardNum) {
+    public void deleteBoard(Integer boardNum) {
         //
         Board board = boardRepository.findByNum(boardNum).get();
 
@@ -151,7 +151,7 @@ public class BoardService {
     /**
      * 게시글 데이터 불러오기 - 1개 _ by Num
      */
-    public Board readBoard(Long num) {
+    public Board readBoard(Integer num) {
         return boardRepository.findByNum(num).orElse(null);
     }
 
@@ -183,7 +183,7 @@ public class BoardService {
      * 조회수 증가
      */
     @Transactional
-    public void updateHits(Long num) {
+    public void updateHits(Integer num) {
 
         // 수정하려는 board 가져오기
         Board board = boardRepository.findByNum(num).orElse(null);

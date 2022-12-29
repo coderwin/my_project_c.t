@@ -37,7 +37,7 @@ public class BoardRepository {
     /**
      * 게시글 불러오기 by board_num
      */
-    public Optional<Board> findByNum(Long num) {
+    public Optional<Board> findByNum(Integer num) {
         
        return Optional.ofNullable(em.find(Board.class, num));
     }

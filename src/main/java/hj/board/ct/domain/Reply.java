@@ -15,7 +15,7 @@ public class Reply {
 
     @Id @GeneratedValue
     @Column(name = "reply_num")
-    private Long num; // 번호
+    private Integer num; // 번호
     @Column(length = 5000)
     private String replyContent; // 내용
     private LocalDateTime replyWritingdate; // 작성 날짜

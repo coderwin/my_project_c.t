@@ -38,7 +38,7 @@ public class QBoard extends EntityPathBase<Board> {
 
     public final QMember member;
 
-    public final NumberPath<Long> num = createNumber("num", Long.class);
+    public final NumberPath<Integer> num = createNumber("num", Integer.class);
 
     public final ListPath<Reply, QReply> replyList = this.<Reply, QReply>createList("replyList", Reply.class, QReply.class, PathInits.DIRECT2);
 

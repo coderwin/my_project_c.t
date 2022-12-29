@@ -14,7 +14,7 @@ public class Likes {
 
     @Id @GeneratedValue
     @Column(name = "likes_num")
-    private Long num; // 좋아요 번호
+    private Integer num; // 좋아요 번호
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")

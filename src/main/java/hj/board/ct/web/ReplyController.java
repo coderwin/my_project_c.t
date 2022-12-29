@@ -28,7 +28,7 @@ public class ReplyController {
     @PostMapping("/board/{boardNum}/reply")
     @ApiOperation(value = "댓글 등록")
     public void createReply(
-            @PathVariable Long boardNum,
+            @PathVariable Integer boardNum,
             @RequestBody ReplyForm replyForm,
             @SessionAttribute(
                     name = SessionConst.LOGIN_MEMBER,
@@ -43,7 +43,7 @@ public class ReplyController {
      */
     @PatchMapping("/board/reply/{replyNum}")
     @ApiOperation(value = "댓글 수정")
-    public void updateReply(@PathVariable Long replyNum,
+    public void updateReply(@PathVariable Integer replyNum,
                             @RequestBody ReplyUpdateForm replyUpdateForm) {
 
         replyService.updateReply(replyNum, replyUpdateForm);
@@ -54,7 +54,7 @@ public class ReplyController {
      */
     @DeleteMapping("/board/reply/{replyNum}")
     @ApiOperation(value = "댓글 삭제")
-    public void deleteReply(@PathVariable Long replyNum) {
+    public void deleteReply(@PathVariable Integer replyNum) {
 
         replyService.deleteReply(replyNum);
     }

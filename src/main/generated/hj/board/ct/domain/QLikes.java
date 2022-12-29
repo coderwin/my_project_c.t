@@ -26,7 +26,7 @@ public class QLikes extends EntityPathBase<Likes> {
 
     public final QMember member;
 
-    public final NumberPath<Long> num = createNumber("num", Long.class);
+    public final NumberPath<Integer> num = createNumber("num", Integer.class);
 
     public QLikes(String variable) {
         this(Likes.class, forVariable(variable), INITS);

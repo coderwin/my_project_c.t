@@ -25,7 +25,7 @@ public class ReplyRepository {
     }
 
     // reply 가져오기 by num
-    public Reply findByNum(Long num) {
+    public Reply findByNum(Integer num) {
         return em.find(Reply.class, num);
     }
 

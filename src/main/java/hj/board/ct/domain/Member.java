@@ -20,7 +20,7 @@ public class Member {
     // 회원 정보
     @Id @GeneratedValue
     @Column(name = "member_num")
-    private Long memberNum; // 회원가입 번호/순서
+    private Integer memberNum; // 회원가입 번호/순서
     @Column(length = 30) @NotNull
     private String memberName; // 회원 이름
 

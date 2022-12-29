@@ -42,7 +42,7 @@ public class UploadFileRepository {
      * 파일 이름 불러오기
      * - test에 사용
      */
-    public List<UploadFile> findAllByBoardNum(Long boardNum) {
+    public List<UploadFile> findAllByBoardNum(Integer boardNum) {
         return query
                 .select(uploadFile)
                 .from(uploadFile)
@@ -62,7 +62,7 @@ public class UploadFileRepository {
      * 첨부파일 삭제하기 by boardNum
      */
     @Transactional
-    public void deleteByBoardNum(Long num) {
+    public void deleteByBoardNum(Integer num) {
 
         query
             .delete(uploadFile)

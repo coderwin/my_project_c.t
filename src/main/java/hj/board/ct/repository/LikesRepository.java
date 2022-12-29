@@ -32,7 +32,7 @@ public class LikesRepository {
 
     // test에 사용
     // Likes 가져오기 by num
-    public Likes findByNum(Long num) {
+    public Likes findByNum(Integer num) {
         return em.find(Likes.class, num);
     }
 
@@ -46,7 +46,7 @@ public class LikesRepository {
     }
 
     // 삭제하기 by jpql
-    public void delete(Long num) {
+    public void delete(Integer num) {
 
         log.info("likesRepository delete에 왔다!!!!!");
         // 쿼리문 만들기

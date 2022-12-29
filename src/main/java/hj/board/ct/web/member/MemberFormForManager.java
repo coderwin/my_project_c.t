@@ -13,7 +13,7 @@ import java.util.List;
 @Getter @Setter
 public class MemberFormForManager {
 
-    private Long memberNum; // 회원 번호
+    private Integer memberNum; // 회원 번호
     private String memberName; // 회원 이름
     private String memberId; // 회원 아이디
     private String memberEmail; // 회원 이메일
@@ -26,7 +26,7 @@ public class MemberFormForManager {
 
     // == 생성 메서드 == //
     public static MemberFormForManager createMemberFormForManager(
-            Long num,
+            Integer num,
             String name,
             String id,
             String email,

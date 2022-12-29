@@ -189,7 +189,7 @@ public class BoardController {
      */
     @GetMapping("/{num}/detail")
     @ApiOperation(value = "게시글 상세보기")
-    public String boardDetailForm(@PathVariable Long num, Model model) {
+    public String boardDetailForm(@PathVariable Integer num, Model model) {
 
         // 조회수 1 증가시키기
         boardService.updateHits(num);
@@ -221,7 +221,7 @@ public class BoardController {
      */
     @GetMapping("/{num}/edit")
     @ApiOperation(value = "게시글 수정 페이지 이동")
-    public String BoardUpdateForm(@PathVariable("num") Long num,
+    public String BoardUpdateForm(@PathVariable("num") Integer num,
                                   @SessionAttribute(
                                           name = SessionConst.LOGIN_MEMBER) LoginMemberFormInSession loginMemberFormInSession,
                                   Model model) {
@@ -249,7 +249,7 @@ public class BoardController {
      */
     @PostMapping("/{num}/edit")
     @ApiOperation(value = "게시글 수정")
-    public String updateBoard(@PathVariable Long num,
+    public String updateBoard(@PathVariable Integer num,
                               @SessionAttribute(
                                       name = SessionConst.LOGIN_MEMBER) LoginMemberFormInSession loginMemberFormInSession,
                               @Validated @ModelAttribute BoardUpdateForm boardUpdateForm,
@@ -295,7 +295,7 @@ public class BoardController {
      */
     @PostMapping("/{num}/delete")
     @ApiOperation(value = "게시글 삭제")
-    public String deleteBoard(@PathVariable Long num,
+    public String deleteBoard(@PathVariable Integer num,
                               @SessionAttribute(
                                       name = SessionConst.LOGIN_MEMBER) LoginMemberFormInSession loginMemberFormInSession) {
 
@@ -316,7 +316,7 @@ public class BoardController {
     }
 
     // 게시글 작성자와 로그인 회원의 아이디를 검사한다
-    private Board checkAuthorWithLoginId(Long num, LoginMemberFormInSession loginMemberFormInSession, String errMessage) {
+    private Board checkAuthorWithLoginId(Integer num, LoginMemberFormInSession loginMemberFormInSession, String errMessage) {
         // Board 불러오기
         Board findBoard = boardService.readBoard(num);
 
@@ -397,7 +397,7 @@ public class BoardController {
      */
     @GetMapping("/pwd/{boardNum}")
     @ApiOperation(value = "게시글 비밀번호 조회")
-    public @ResponseBody BoardPwdForm getBoardPwd(@PathVariable Long boardNum) {
+    public @ResponseBody BoardPwdForm getBoardPwd(@PathVariable Integer boardNum) {
 
         // 게시글 비밀번호 가져오기
         Board findBoard = boardService.readBoard(boardNum);

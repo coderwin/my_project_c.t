@@ -53,7 +53,7 @@ public class MemberService {
      * 회원정보 수정하기 by member_num
      */
     @Transactional
-    public void updateMemberByNum(Long memberNum, MemberUpdateForm memberUpdateForm) {
+    public void updateMemberByNum(Integer memberNum, MemberUpdateForm memberUpdateForm) {
         Member updateMember = memberRepository.findByNum(memberNum);
 
         // 수정할 값 입력하기
@@ -89,7 +89,7 @@ public class MemberService {
      * 회원정보 삭제하기 by member_num : 완전 삭제
      */
     @Transactional
-    public void deleteMemberV1(Long memberNum) {
+    public void deleteMemberV1(Integer memberNum) {
         // 회원 정보 가져오기
         Member deleteMember = memberRepository.findByNum(memberNum);
         // 삭제하기
@@ -100,7 +100,7 @@ public class MemberService {
      * 회원정보 삭제하기 by member_num : 사용자가 사용 못 하게 db에만 보관
      */
     @Transactional
-    public void deleteMemberV2(Long memberNum) {
+    public void deleteMemberV2(Integer memberNum) {
         // 회원 정보 가져오기
         Member deleteMember = memberRepository.findByNum(memberNum);
         // 탈퇴날짜 입력하기
@@ -123,7 +123,7 @@ public class MemberService {
     /**
      * 필요한 회원정보 가져오기 for detail of member by memberNum
      */
-    public MemberUpdateForm readMember(Long memberNum) {
+    public MemberUpdateForm readMember(Integer memberNum) {
         // 회원 정보 가져오기
         Member member = memberRepository.findByNum(memberNum);
 
@@ -193,7 +193,7 @@ public class MemberService {
     /**
      * 필요한 회원정보 가져오기 for detail of member by memberNum
      */
-    public MemberDetailForm makeMemberDetailForm(Long memberNum) {
+    public MemberDetailForm makeMemberDetailForm(Integer memberNum) {
         // 회원 정보 가져오기
         Member member = memberRepository.findByNum(memberNum);
 

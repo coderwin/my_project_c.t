@@ -22,7 +22,7 @@ public class Board {
 
     @Id @GeneratedValue
     @Column(name = "board_num")
-    private Long num;
+    private Integer num;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
