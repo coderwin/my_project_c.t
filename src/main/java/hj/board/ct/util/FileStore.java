@@ -38,9 +38,10 @@ public class FileStore {
      * form으로부터 받은 여러 개의 파일들 저장하기
      */
     public List<UploadFile> storeFiles(List<MultipartFile> multipartFiles) throws IOException {
-
+        // 파일 담을 list 생성
         List<UploadFile> storeFileResult = new ArrayList<>();
 
+        // list에 담기
         for(MultipartFile multipartFile : multipartFiles) {
             if(!multipartFile.isEmpty()) {
                 storeFileResult.add(storeFile(multipartFile));

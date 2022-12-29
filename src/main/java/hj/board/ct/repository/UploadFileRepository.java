@@ -68,8 +68,5 @@ public class UploadFileRepository {
             .delete(uploadFile)
             .where(uploadFile.board.num.eq(num))
             .execute();
-
-
-
     }
 }

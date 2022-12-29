@@ -92,9 +92,9 @@ public class BoardViewForm {
 
     // uploadFileList의 확자자 조사 => 이미지 파일만 보관하기
     public static List<UploadFile> checkExe(List<UploadFile> uploadFiles) {
-
+        // 확장자 pattern 설정
         String pattern = ".*(?<=\\.(jpg|JPG|png|PNG|jpeg|JPEG|gif|GIF))";
-
+        // pattern으로 파일 필터
         List<UploadFile> findUploadFiles = uploadFiles
                 .stream()
                 .filter((uploadFile) ->

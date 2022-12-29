@@ -125,6 +125,7 @@ public class BoardRepository {
         return null;
     }
 
+    // 내용 검색
     private BooleanExpression likeBoardContent(String content) {
         if(StringUtils.hasText(content)) {
             return board.boardContent.like("%" + content + "%");
@@ -132,6 +133,7 @@ public class BoardRepository {
         return null;
     }
 
+    // 제목 검색
     private BooleanExpression likeBoardTitle(String title) {
         if(StringUtils.hasText(title)) {
             return board.boardTitle.like("%" + title + "%");
@@ -139,6 +141,7 @@ public class BoardRepository {
         return null;
     }
 
+    // 아이디 검색
     private BooleanExpression likeBoardId(String id) {
         if(StringUtils.hasText(id)) {
             return board.member.memberId.like("%" + id + "%");

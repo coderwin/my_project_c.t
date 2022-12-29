@@ -422,7 +422,7 @@ public class MemberServiceTest {
                 changeTypeForBirthday(birthday),
                 joindate);
 
-        List<MemberFormForManager> result = memberService.readMoreMebers(memberSearchCond);
+        List<MemberFormForManager> result = memberService.readMoreMembers(memberSearchCond);
 
         // then
         assertThat(result.size()).isEqualTo(resultNum);

@@ -256,8 +256,10 @@ public class MemberLoginController {
         }
 
         // 아이디 뒤에 4자리는 ****로 표시
+        // 비밀번호 담을 list 생성
         List<String> printPwdList = new ArrayList<>();
 
+        // 비밀번호 list에 담기
         pwdList.forEach((pwd) -> {
             StringBuffer sb = new StringBuffer();
 

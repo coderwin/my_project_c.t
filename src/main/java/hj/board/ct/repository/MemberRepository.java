@@ -77,10 +77,12 @@ public class MemberRepository {
      */
     public List<Member> findAll(MemberSearchCond cond) {
 
+        // 검색에 필요한 condition 가져오기
         String memberId = cond.getMemberId();
         String memberJoindate = cond.getMemberJoindate();
         LocalDate memberBirthday = cond.getMemberBirthday();
 
+        // 모든 회원정보 가져오기
         List<Member> result = query
                 .select(member)
                 .from(member)
@@ -90,6 +92,7 @@ public class MemberRepository {
         return result;
     }
 
+    // 생일 검색
     private BooleanExpression eqMemberBirthday(LocalDate memberBirthday) {
         if(memberBirthday != null) {
             return member.memberBirthday.eq(memberBirthday);
@@ -97,6 +100,7 @@ public class MemberRepository {
         return null;
     }
 
+    // 가입날짜 검색
     private BooleanExpression BetweenMemberJoindate(String memberJoindate) {
         if(StringUtils.hasText(memberJoindate)) {
             // 찾는 시간을 입력받기
@@ -107,6 +111,7 @@ public class MemberRepository {
         return null;
     }
 
+    // 아이디 검색
     private BooleanExpression likeMemberId(String memberId) {
         if(StringUtils.hasText(memberId)) {
             return member.memberId.like("%" + memberId + "%");

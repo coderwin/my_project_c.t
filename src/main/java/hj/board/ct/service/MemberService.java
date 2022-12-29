@@ -167,7 +167,7 @@ public class MemberService {
     /**
      * 모든 회원정보 가져오기
      */
-    public List<MemberFormForManager> readMoreMebers(MemberSearchCond memberSearchCond) {
+    public List<MemberFormForManager> readMoreMembers(MemberSearchCond memberSearchCond) {
         List<MemberFormForManager> memberFormForManagers = new ArrayList<>();
 
         memberRepository.findAll(memberSearchCond).forEach(m -> {

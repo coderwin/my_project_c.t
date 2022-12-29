@@ -9,6 +9,6 @@ import lombok.Setter;
 @Getter @Setter
 public class ReplyForm {
 
-    private String content;
-    private String rock;
+    private String content; // 내용
+    private String rock; // 비밀번호
 }
