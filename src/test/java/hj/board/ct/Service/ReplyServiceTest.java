@@ -16,6 +16,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Profile;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -79,7 +80,7 @@ public class ReplyServiceTest {
 //        em.clear();
 
         // then
-        Reply findReply = replyRepository.findByNum(5L); // test 부족
+        Reply findReply = replyRepository.findByNum(5); // test 부족
 
         // 데이터로 확인하기
         log.info("findReply : {}", findReply);

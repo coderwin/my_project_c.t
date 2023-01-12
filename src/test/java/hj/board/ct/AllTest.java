@@ -64,10 +64,12 @@ public class AllTest {
 
         // 첨부파일 생성
         UploadFile uploadFile1 = new UploadFile("123.jpg", "1234.jpg");
-        uploadFile1.addBoard(board);
+//        uploadFile1.addBoard(board);
+        board.addUploadFile(uploadFile1);
 
         UploadFile uploadFile2 = new UploadFile("1235.jpg", "1236.jpg");
-        uploadFile2.addBoard(board);
+//        uploadFile2.addBoard(board);
+        board.addUploadFile(uploadFile2);
 
         // 저장
         uploadFileRepository.save(uploadFile1);

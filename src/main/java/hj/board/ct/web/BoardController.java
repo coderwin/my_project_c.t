@@ -170,7 +170,7 @@ public class BoardController {
     private void saveUploadFiles(Board board, List<UploadFile> uploadFileList) {
         uploadFileList.stream().forEach((uploadFile) -> {
 
-            uploadFile.addBoard(board);// 첨부파일이 저장되는 board 저장하기
+            board.addUploadFile(uploadFile);// 첨부파일이 저장되는 board 저장하기
             uploadFileRepository.save(uploadFile);
         });
     }

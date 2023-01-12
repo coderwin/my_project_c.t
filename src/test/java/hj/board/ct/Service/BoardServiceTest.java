@@ -130,7 +130,7 @@ public class BoardServiceTest {
 
         // when
         // 게시글 저장
-        Long saveNum = boardService.saveBoardV2(board);
+        Integer saveNum = boardService.saveBoardV2(board);
 
         // then
         // 게시글 존재하는 지 확인하기
@@ -156,7 +156,7 @@ public class BoardServiceTest {
 
         // given
         // 회원 불러오기
-        Member member = memberRepository.findByNum(1L);
+        Member member = memberRepository.findByNum(1);
         // 게시글 작성하기
         Board board = Board.createBoard(
                 member,
@@ -180,11 +180,11 @@ public class BoardServiceTest {
      * 게시글 수정 확인
      */
     @Test
-    public void 게시글_수정() {
+    public void 게시글_수정() throws InterruptedException {
 
         // given
         // 회원 불러오기
-        Member member = memberRepository.findByNum(1L);
+        Member member = memberRepository.findByNum(1);
         // 게시글 작성하기
         Board board = Board.createBoard(
                 member,
@@ -198,6 +198,10 @@ public class BoardServiceTest {
         // 게시글 저장 시, 생성날짜, 수정날짜 같은지 확인하기
         assertThat(board.getBoardWritingdate()).isEqualTo(board.getBoardUpdatedate());
 //        assertThat(board.getBoardWritingdate()).isNotEqualTo(board.getBoardUpdatedate());
+
+        // 0.1초 지연 시키기
+        Thread.sleep(100L);
+
         // 게시글 수정
         BoardUpdateForm boardUpdateForm = new BoardUpdateForm(
                 "member",
@@ -234,7 +238,7 @@ public class BoardServiceTest {
 
         // given
         // 회원 불러오기
-        Member member = memberRepository.findByNum(1L);
+        Member member = memberRepository.findByNum(1);
         // 게시글 작성하기
         Board board = Board.createBoard(
                 member,
@@ -269,8 +273,8 @@ public class BoardServiceTest {
     public void 모든_게시글_불러오기_with_검색() {
         // given
         // 회원 불러오기
-        Member member1 = memberRepository.findByNum(1L);
-        Member member2 = memberRepository.findByNum(2L);
+        Member member1 = memberRepository.findByNum(1);
+        Member member2 = memberRepository.findByNum(2);
 
         // 게시글 작성하기
         Board board1 = Board.createBoard(
@@ -461,7 +465,7 @@ public class BoardServiceTest {
     public void 조회수_증가() {
         // given
         // Member 불러오기
-        Member member = memberRepository.findByNum(1L);
+        Member member = memberRepository.findByNum(1);
 
         log.info("조회수_증가 test member : {}", member);
 
@@ -549,8 +553,8 @@ public class BoardServiceTest {
     public void 이미지파일만_담겼는지_확인하기() {
         // given
         // 회원 불러오기
-        Member member1 = memberRepository.findByNum(1L);
-        Member member2 = memberRepository.findByNum(2L);
+        Member member1 = memberRepository.findByNum(1);
+        Member member2 = memberRepository.findByNum(2);
 
         // 게시글 작성하기
         // 이미지 파일 생성

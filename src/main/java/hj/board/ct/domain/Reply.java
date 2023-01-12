@@ -44,7 +44,7 @@ public class Reply {
         reply.setReplyWritingdate(LocalDateTime.now());
         reply.setReplyUpdatedate(LocalDateTime.now());
         reply.setMember(member);
-        reply.setBoard(board);
+        board.addReply(reply);
 
         return reply;
     }

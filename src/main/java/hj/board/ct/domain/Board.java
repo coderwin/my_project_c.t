@@ -45,12 +45,33 @@ public class Board {
                                              // 원본 파일 이름/ 저장된 파일 이름이 있다
     // 게시글 좋아요
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
-    private List<Likes> likesList;
+    private List<Likes> likesList = new ArrayList<>();
 
     // 게시글 댓글
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
     @OrderBy(value = "reply_num DESC")
-    private List<Reply> replyList;
+    private List<Reply> replyList = new ArrayList<>();
+
+    // == 연관 관계 메서드 == //
+    public void addMember(Member member) {
+        member.getBoardList().add(this);
+        this.setMember(member);
+    }
+
+    public void addReply(Reply reply) {
+        reply.setBoard(this);
+        this.getReplyList().add(reply);
+    }
+
+    public void addLikes(Likes likes) {
+        likes.setBoard(this);
+        this.getLikesList().add(likes);
+    }
+
+    public void addUploadFile(UploadFile uploadFile) {
+        uploadFile.setBoard(this);
+        this.getUploadFileList().add(uploadFile);
+    }
 
     // == 생성 메서드 == //
     public static Board createBoard(Member member,
@@ -60,7 +81,7 @@ public class Board {
 
         Board board = new Board();
 
-        board.setMember(member);
+        board.addMember(member);
         board.setBoardTitle(title);
         board.setBoardContent(content);
         board.setBoardWritingdate(LocalDateTime.now());
@@ -81,7 +102,7 @@ public class Board {
 
         Board board = new Board();
 
-        board.setMember(member);
+        board.addMember(member);
         board.setBoardTitle(title);
         board.setBoardContent(showSpaceAndLineBreakInContent(content));
         board.setBoardWritingdate(LocalDateTime.now());

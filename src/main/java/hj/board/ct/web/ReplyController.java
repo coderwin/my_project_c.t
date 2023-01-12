@@ -49,7 +49,7 @@ public class ReplyController {
         replyService.updateReply(replyNum, replyUpdateForm);
     }
 
-    /**
+    /** 
      * 댓글 삭제하기
      */
     @DeleteMapping("/board/reply/{replyNum}")

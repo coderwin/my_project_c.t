@@ -95,9 +95,9 @@ let searchByWritingdate = function() {
             let writingdateLength = writingdate.length;
             console.log("search writingdate : ", writingdate);
 
-            // 생일 오류
+            // 날짜 패턴
             const patternWritingdate =
-                            /^(1[0-9][0-9][0-9]|20([0-1][0-9]|2[0-2]))((0[1|3|5|7-8]|1[0|2])(0[1-9]|[1-2][0-9]|3[0-1])|02(0[1-9]|[1-2][0-9])|(0[4|6|9]|11)(0[1-9]|[1-2][0-9]|30))$/;
+                            /^(1[0-9][0-9][0-9]|20([0-1][0-9]|2[0-3]))((0[1|3|5|7-8]|1[0|2])(0[1-9]|[1-2][0-9]|3[0-1])|02(0[1-9]|[1-2][0-9])|(0[4|6|9]|11)(0[1-9]|[1-2][0-9]|30))$/;
 
             let patternResult = patternWritingdate.test(writingdate);
             console.log("patternResult : ", patternResult);

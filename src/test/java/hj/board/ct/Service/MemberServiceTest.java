@@ -3,6 +3,7 @@ package hj.board.ct.Service;
 import hj.board.ct.domain.Member;
 import hj.board.ct.domain.MemberChecking;
 import hj.board.ct.domain.SubscriptionStatusOfMember;
+import hj.board.ct.exception.ExistingIdException;
 import hj.board.ct.repository.MemberRepository;
 import hj.board.ct.repository.MemberSearchCond;
 import hj.board.ct.service.MemberService;
@@ -122,7 +123,7 @@ public class MemberServiceTest {
                 memberForm.getPhone2());
 
         // when // then
-        Throwable exception = org.junit.jupiter.api.Assertions.assertThrows(IllegalStateException.class,
+        Throwable exception = org.junit.jupiter.api.Assertions.assertThrows(ExistingIdException.class,
                 () -> memberService.join(member2));
         // 예외 메시지 확인하기
 //        org.junit.jupiter.api.Assertions.assertEquals("사용중인 아이디 입니다2", exception.getMessage());
@@ -314,6 +315,7 @@ public class MemberServiceTest {
 
     /**
      * 필요한 회원 정보 불러오기 _ 상세보기 _ by Num
+     * - 테스트 보완 필요
      */
     @Test
     public void 필요한_회원정보_불러오기ByNum() {
@@ -345,6 +347,7 @@ public class MemberServiceTest {
 
     /**
      * 필요한 회원 정보 불러오기 _ 상세보기 _ by Id
+     * - 테스트 보완 필요
      */
     @Test
     public void 필요한_회원정보_불러오기ById() {

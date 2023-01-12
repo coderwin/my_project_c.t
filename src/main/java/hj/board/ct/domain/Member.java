@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -55,11 +56,11 @@ public class Member {
 //    // 회원이 작성한 모든 게시글 가져오기
 //    // persist한 것은 아이디를 삭제하더라도 게시물은 남아있게 하기위해, 아이디 바뀌면 아이디 바꿔주기
     @OneToMany(mappedBy = "member")
-    private List<Board> boardList; // 회원이 쓴 게시글 가져오기
+    private List<Board> boardList = new ArrayList<>(); // 회원이 쓴 게시글 가져오기
 
     // likes 삭제에 사용
     @OneToMany(mappedBy = "member")
-    private List<Likes> likesList;
+    private List<Likes> likesList = new ArrayList<>();
 
     // == 생성 메서드 == //
 

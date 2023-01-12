@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Profile;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,12 +37,12 @@ public class UploadFileRepositoryTest {
      * 첨부파일 저장 확인
      */
     @Test
-    @Rollback(value = false)
+//    @Rollback(value = false)
     public void 첨부파일_저장() {
 
         // given
         // Member 생성
-        Member member = Member.createMember("test123",
+        Member member = Member.createMember("test1234",
                 "12345",
                 "하하",
                 "test@test",
@@ -61,10 +62,12 @@ public class UploadFileRepositoryTest {
 
         // 첨부파일 생성
         UploadFile uploadFile1 = new UploadFile("123.jpg", "1234.jpg");
-        uploadFile1.addBoard(board);
+//        uploadFile1.addBoard(board);
+        board.addUploadFile(uploadFile1);
 
         UploadFile uploadFile2 = new UploadFile("1235.jpg", "1236.jpg");
-        uploadFile2.addBoard(board);
+//        uploadFile2.addBoard(board);
+        board.addUploadFile(uploadFile2);
 
         // when
         // 저장

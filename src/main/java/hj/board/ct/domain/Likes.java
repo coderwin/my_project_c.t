@@ -24,13 +24,19 @@ public class Likes {
     @JoinColumn(name = "board_num")
     private Board board; // 게시글 번호
 
+    // ** 연관관계 메서드 ** //
+    public void addMember(Member member) {
+        member.getLikesList().add(this);
+        this.setMember(member);
+    }
+
     // ** 생성 로직 ** //
     public static Likes createLikes(Member member, Board board) {
 
         Likes likes = new Likes();
 
-        likes.setMember(member);
-        likes.setBoard(board);
+        likes.addMember(member);
+        board.addLikes(likes);
 
         return likes;
     }
