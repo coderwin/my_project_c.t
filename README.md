@@ -24,10 +24,9 @@
 
 <!-- 사이트 링크 연결 -->
 <h3>
-  <a href="www.comtogether.shop" 
-     title="사이트 둘러보기">
-    :link: 사이트 둘러보기
-  </a>(www.comtogether.shop)
+  
+  :link: 사이트 둘러보기 
+  (www.comtogether.shop)[서비스 종료(2023-03-21)]
 </h3>
 
 <!-- detail 링크 연결 -->
